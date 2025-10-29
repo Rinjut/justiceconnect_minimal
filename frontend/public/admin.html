@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JusticeConnect Admin Dashboard</title>
+  <link rel="shortcut icon" type="image/png" href="./assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="./css/styles.min.css" />
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+
+    <!--  App Topstrip -->
+    <div class="app-topstrip bg-dark py-6 px-3 w-100 d-lg-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-center gap-3 mb-2 mb-lg-0">
+        <a class="d-flex justify-content-center align-items-center text-white text-decoration-none" href="#">
+          <img src="assets/images/logos/logo-wrappixel.svg" alt="" width="48" style="filter:brightness(0) invert(1);">
+          <div class="ms-2">
+            <div class="fw-bold text-white" style="line-height:1;">JusticeConnect</div>
+            <div class="text-white-50 small">Legal Aid Management</div>
+          </div>
+        </a>
+      </div>
+      <div class="text-white small text-center text-lg-end">
+        <span class="d-block fw-semibold">Admin Control Panel</span>
+        <span class="text-white-50">Confidential / Internal Use Only</span>
+      </div>
+    </div>
+
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./admin.html" class="text-nowrap logo-img d-flex align-items-center">
+            <img src="assets/images/logos/logo.svg" alt="" />
+            <span class="ms-2 fw-semibold">JusticeConnect</span>
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-6"></i>
+          </div>
+        </div>
+
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
+              <span class="hide-menu">ADMIN HOME</span>
+            </li>
+
+            <!-- Dashboard -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./admin.html" aria-expanded="false">
+                <i class="ti ti-atom"></i>
+                <span class="hide-menu">Dashboard</span>
+              </a>
+            </li>
+
+            <!-- Case Queue -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="#" aria-expanded="false">
+                <i class="ti ti-clipboard-list"></i>
+                <span class="hide-menu">Case Queue</span>
+              </a>
+            </li>
+
+            <!-- Assign Lawyers -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="#" aria-expanded="false">
+                <i class="ti ti-user-check"></i>
+                <span class="hide-menu">Assign Lawyer</span>
+              </a>
+            </li>
+
+            <!-- Directory -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="#" aria-expanded="false">
+                <i class="ti ti-users"></i>
+                <span class="hide-menu">Lawyer Directory</span>
+              </a>
+            </li>
+
+            <!-- Survivor Requests -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="#" aria-expanded="false">
+                <i class="ti ti-user-heart"></i>
+                <span class="hide-menu">Survivor Requests</span>
+              </a>
+            </li>
+
+           
+            <!-- Lawyer Availability (new quick access link) -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="#lawyer-availability" aria-expanded="false">
+                <i class="ti ti-user-check"></i>
+                <span class="hide-menu">Lawyer Availability</span>
+              </a>
+            </li>
+
+            <li>
+              <span class="sidebar-divider lg"></span>
+            </li>
+
+            <li class="nav-small-cap">
+              <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
+              <span class="hide-menu">ACCOUNT</span>
+            </li>
+
+           
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+                <i class="ti ti-logout"></i>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+    </aside>
+    <!--  Sidebar End -->
+
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler " id="headerCollapse" href="javascript:void(0)">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+
+            <!-- notifications -->
+            <li class="nav-item dropdown">
+              <a class="nav-link " href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="ti ti-bell"></i>
+                <div class="notification bg-primary rounded-circle"></div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-animate-up" aria-labelledby="drop1">
+                <div class="message-body">
+                  <a href="javascript:void(0)" class="dropdown-item">
+                    New high-priority request submitted
+                  </a>
+                  <a href="javascript:void(0)" class="dropdown-item">
+                    Lawyer A. Patel marked available
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+
+              <!-- profile menu -->
+              <li class="nav-item dropdown">
+                <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <img src="./profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                  <div class="message-body">
+                    <div class="px-3 pb-2 small text-muted">Signed in as</div>
+                    <div class="px-3 pb-2 fw-semibold">System Admin</div>
+
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-user fs-6"></i>
+                      <p class="mb-0 fs-3">My Profile</p>
+                    </a>
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-lock fs-6"></i>
+                      <p class="mb-0 fs-3">Access Control</p>
+                    </a>
+                    <a href="./index.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!--  Header End -->
+
+      <div class="body-wrapper-inner">
+        <div class="container-fluid">
+          <!--  Row 1 -->
+          <div class="row">
+            <!-- LEFT MAIN CARD: Case Overview -->
+            <div class="col-lg-8">
+              <div class="card w-100">
+                <div class="card-body">
+                  <div class="d-md-flex align-items-center">
+                    <div>
+                      <h4 class="card-title">Case Overview</h4>
+                      <p class="card-subtitle">
+                        Incoming requests vs Assigned vs Active work
+                      </p>
+                    </div>
+                    <div class="ms-auto">
+                      <ul class="list-unstyled mb-0">
+                        <li class="list-inline-item text-primary">
+                          <span class="round-8 text-bg-primary rounded-circle me-1 d-inline-block"></span>
+                          New Requests
+                        </li>
+                        <li class="list-inline-item text-info">
+                          <span class="round-8 text-bg-info rounded-circle me-1 d-inline-block"></span>
+                          Active Cases
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- chart -->
+                  <div id="sales-overview" class="mt-4 mx-n6"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT SIDE CARD: System Snapshot -->
+            <div class="col-lg-4">
+              <div class="card overflow-hidden">
+                <div class="card-body pb-0">
+                  <div class="d-flex align-items-start">
+                    <div>
+                      <h4 class="card-title">System Snapshot</h4>
+                      <p class="card-subtitle">Live status</p>
+                    </div>
+                    <div class="ms-auto">
+                      <div class="dropdown">
+                        <a href="javascript:void(0)" class="text-muted" id="year1-dropdown" data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          <i class="ti ti-dots fs-7"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="year1-dropdown">
+                          <li>
+                            <a class="dropdown-item" href="javascript:void(0)">View Logs</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="javascript:void(0)">Download Report</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- item 1 -->
+                  <div class="mt-4 pb-3 d-flex align-items-center">
+                    <span class="btn btn-primary rounded-circle round-48 hstack justify-content-center">
+                      <i class="ti ti-alert-triangle fs-6"></i>
+                    </span>
+                    <div class="ms-3">
+                      <h5 class="mb-0 fw-bolder fs-4">High Priority Cases</h5>
+                      <span class="text-muted fs-3">Needing assignment now</span>
+                    </div>
+                    <div class="ms-auto">
+                      <span class="badge bg-secondary-subtle text-muted">4</span>
+                    </div>
+                  </div>
+
+                  <!-- item 2 -->
+                  <div class="py-3 d-flex align-items-center">
+                    <span class="btn btn-warning rounded-circle round-48 hstack justify-content-center">
+                      <i class="ti ti-user-check fs-6"></i>
+                    </span>
+                    <div class="ms-3">
+                      <h5 class="mb-0 fw-bolder fs-4">Lawyers Available</h5>
+                      <span class="text-muted fs-3">Marked "accepting cases"</span>
+                    </div>
+                    <div class="ms-auto">
+                      <span class="badge bg-secondary-subtle text-muted">12</span>
+                    </div>
+                  </div>
+
+                  <!-- item 3 -->
+                  <div class="py-3 d-flex align-items-center">
+                    <span class="btn btn-success rounded-circle round-48 hstack justify-content-center">
+                      <i class="ti ti-heart-handshake fs-6"></i>
+                    </span>
+                    <div class="ms-3">
+                      <h5 class="mb-0 fw-bolder fs-4">Survivors Supported</h5>
+                      <span class="text-muted fs-3">This week</span>
+                    </div>
+                    <div class="ms-auto">
+                      <span class="badge bg-secondary-subtle text-muted">27</span>
+                    </div>
+                  </div>
+
+                  <!-- item 4 -->
+                  <div class="pt-3 mb-7 d-flex align-items-center">
+                    <span class="btn btn-secondary rounded-circle round-48 hstack justify-content-center">
+                      <i class="ti ti-shield-lock fs-6"></i>
+                    </span>
+                    <div class="ms-3">
+                      <h5 class="mb-0 fw-bolder fs-4">Access / Security</h5>
+                      <span class="text-muted fs-3">No policy violations</span>
+                    </div>
+                    <div class="ms-auto">
+                      <span class="badge bg-secondary-subtle text-muted">OK</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- TABLE: Assignment Queue -->
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-md-flex align-items-center">
+                    <div>
+                      <h4 class="card-title">Assignment Queue</h4>
+                      <p class="card-subtitle">
+                        Survivors waiting to be matched with a qualified lawyer
+                      </p>
+                    </div>
+                    <div class="ms-auto mt-3 mt-md-0">
+                      <select class="form-select theme-select border-0" aria-label="Select timeframe">
+                        <option value="1">Today</option>
+                        <option value="2">This week</option>
+                        <option value="3">This month</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="table-responsive mt-4">
+                    <table class="table mb-0 text-nowrap varient-table align-middle fs-3">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="px-0 text-muted">Survivor</th>
+                          <th scope="col" class="px-0 text-muted">Case ID</th>
+                          <th scope="col" class="px-0 text-muted">Priority</th>
+                          <th scope="col" class="px-0 text-muted text-end">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="px-0">
+                            <div class="d-flex align-items-center">
+                              <img src="./profile/user-3.jpg" class="rounded-circle" width="40" alt="profile" />
+                              <div class="ms-3">
+                                <h6 class="mb-0 fw-bolder">Anonymous Survivor</h6>
+                                <span class="text-muted">Ontario • Family Law</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-0">JC-2025-016</td>
+                          <td class="px-0">
+                            <span class="badge bg-danger">High</span>
+                          </td>
+                          <td class="px-0 text-dark fw-medium text-end">
+                            Needs assignment
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="px-0">
+                            <div class="d-flex align-items-center">
+                              <img src="./profile/user-5.jpg" class="rounded-circle" width="40" alt="profile" />
+                              <div class="ms-3">
+                                <h6 class="mb-0 fw-bolder">J. D.</h6>
+                                <span class="text-muted">Alberta • Housing</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-0">JC-2025-017</td>
+                          <td class="px-0">
+                            <span class="badge text-bg-primary">Medium</span>
+                          </td>
+                          <td class="px-0 text-dark fw-medium text-end">
+                            Reviewing intake
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="px-0">
+                            <div class="d-flex align-items-center">
+                              <img src="./profile/user-6.jpg" class="rounded-circle" width="40" alt="profile" />
+                              <div class="ms-3">
+                                <h6 class="mb-0 fw-bolder">Confidential</h6>
+                                <span class="text-muted">Ontario • Family Safety</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-0">JC-2025-018</td>
+                          <td class="px-0">
+                            <span class="badge bg-warning">High</span>
+                          </td>
+                          <td class="px-0 text-dark fw-medium text-end">
+                            Assigned to review
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="px-0">
+                            <div class="d-flex align-items-center">
+                              <img src="./profile/user-7.jpg" class="rounded-circle" width="40" alt="profile" />
+                              <div class="ms-3">
+                                <h6 class="mb-0 fw-bolder">A. S.</h6>
+                                <span class="text-muted">BC • Employment</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-0">JC-2025-019</td>
+                          <td class="px-0">
+                            <span class="badge bg-success">Low</span>
+                          </td>
+                          <td class="px-0 text-dark fw-medium text-end">
+                            Waiting lawyer accept
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="px-0">
+                            <div class="d-flex align-items-center">
+                              <img src="./profile/user-8.jpg" class="rounded-circle" width="40" alt="profile" />
+                              <div class="ms-3">
+                                <h6 class="mb-0 fw-bolder">M. R.</h6>
+                                <span class="text-muted">Ontario • Benefits</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-0">JC-2025-020</td>
+                          <td class="px-0">
+                            <span class="badge bg-success">Low</span>
+                          </td>
+                          <td class="px-0 text-dark fw-medium text-end">
+                            Assigned to Patel
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- LOWER ROW -->
+            <div class="col-lg-6" id="lawyer-availability">
+              <!-- Card: Lawyer Availability -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-start">
+                    <div>
+                      <h4 class="card-title mb-0">Lawyer Availability</h4>
+                      <p class="text-muted mb-4 fs-3">Who can take new cases today</p>
+                    </div>
+                    <div class="ms-auto">
+                      <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary d-flex align-items-center gap-2">
+                        <i class="ti ti-user-check fs-5"></i>
+                        <span>View Full Availability</span>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="mb-3 d-flex align-items-start border-bottom pb-3">
+                    <div class="rounded-circle bg-primary-subtle text-primary hstack justify-content-center round-48 fs-4">
+                      <i class="ti ti-user-check"></i>
+                    </div>
+                    <div class="ms-3 flex-grow-1">
+                      <div class="fw-semibold">A. Patel</div>
+                      <div class="text-muted small">Family Law • Ontario</div>
+                      <div class="badge bg-success-subtle text-success mt-2">Available now</div>
+                    </div>
+                    <div class="text-end small text-muted">
+                      Next slot:<br> Today 2–4pm
+                    </div>
+                  </div>
+
+                  <div class="mb-3 d-flex align-items-start border-bottom pb-3">
+                    <div class="rounded-circle bg-warning-subtle text-warning hstack justify-content-center round-48 fs-4">
+                      <i class="ti ti-user-check"></i>
+                    </div>
+                    <div class="ms-3 flex-grow-1">
+                      <div class="fw-semibold">R. Chen</div>
+                      <div class="text-muted small">Housing • Alberta</div>
+                      <div class="badge bg-warning-subtle text-warning mt-2">Limited</div>
+                    </div>
+                    <div class="text-end small text-muted">
+                      Next slot:<br> Tomorrow AM
+                    </div>
+                  </div>
+
+                  <div class="d-flex align-items-start">
+                    <div class="rounded-circle bg-secondary-subtle text-secondary hstack justify-content-center round-48 fs-4">
+                      <i class="ti ti-user-x"></i>
+                    </div>
+                    <div class="ms-3 flex-grow-1">
+                      <div class="fw-semibold">K. Singh</div>
+                      <div class="text-muted small">Employment • BC</div>
+                      <div class="badge bg-secondary-subtle text-secondary mt-2">Unavailable</div>
+                    </div>
+                    <div class="text-end small text-muted">
+                      Next slot:<br> Next week
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <!-- Card: Program Impact -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <h4 class="card-title mb-0">Impact Overview</h4>
+                    <select class="form-select w-auto ms-auto">
+                      <option selected="">This Week</option>
+                      <option value="1">This Month</option>
+                    </select>
+                  </div>
+
+                  <div class="d-flex align-items-center flex-row mt-4">
+                    <div class="p-2 display-5 text-primary">
+                      <i class="ti ti-heart-handshake"></i>
+                      <span>27</span>
+                    </div>
+                    <div class="p-2">
+                      <h3 class="mb-0">Survivors Helped</h3>
+                      <small>Across 3 regions</small>
+                    </div>
+                  </div>
+
+                  <table class="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>Cases Closed</td>
+                        <td class="fw-medium text-end">8</td>
+                      </tr>
+                      <tr>
+                        <td>Active Cases</td>
+                        <td class="fw-medium text-end">22</td>
+                      </tr>
+                      <tr>
+                        <td>High Risk (Safety)</td>
+                        <td class="fw-medium text-end text-danger">4</td>
+                      </tr>
+                      <tr>
+                        <td>Avg. Time to Assign</td>
+                        <td class="fw-medium text-end">3.2 hrs</td>
+                      </tr>
+                      <tr>
+                        <td>Lawyers Engaged</td>
+                        <td class="fw-medium text-end">15</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <hr />
+
+                  <ul class="list-unstyled row text-center city-weather-days mb-0">
+                    <li class="col">
+                      <i class="ti ti-user-heart fs-4"></i><span>Support</span>
+                      <h3 class="mb-0 fs-6 lh-base">12 survivors</h3>
+                    </li>
+                    <li class="col">
+                      <i class="ti ti-user-check fs-4"></i><span>Assigned</span>
+                      <h3 class="mb-0 fs-6 lh-base">9 cases</h3>
+                    </li>
+                    <li class="col">
+                      <i class="ti ti-shield-lock fs-4"></i><span>Safe Exit Info Shared</span>
+                      <h3 class="mb-0 fs-6 lh-base">7 times</h3>
+                    </li>
+                    <li class="col">
+                      <i class="ti ti-report-analytics fs-4"></i><span>Donor KPI</span>
+                      <h3 class="mb-0 fs-6 lh-base">On track</h3>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="py-6 px-6 text-center">
+            <p class="mb-0 fs-4">
+              JusticeConnect • Secure Legal Aid Platform
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- scripts -->
+  <!-- <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/sidebarmenu.js"></script>
+  <script src="./js/app.min.js"></script>
+  <script src="./apexcharts/dist/apexcharts.min.js"></script>
+  <script src="./assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="./js/dashboard.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script> -->
+</body>
+</html>

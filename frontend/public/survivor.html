@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JusticeConnect | Survivor Dashboard</title>
+  <link rel="shortcut icon" type="image/png" href="./assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="./css/styles.min.css" />
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+
+    <!--  App Topstrip -->
+    <div class="app-topstrip bg-dark py-6 px-3 w-100 d-lg-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-center gap-3 mb-2 mb-lg-0">
+        <a class="d-flex justify-content-center align-items-center text-white text-decoration-none" href="#">
+          <!-- keep logo asset but visually rename -->
+          <img src="assets/images/logos/logo-wrappixel.svg" alt="" width="48" style="filter:brightness(0) invert(1);">
+          <div class="ms-2">
+            <div class="fw-bold text-white" style="line-height:1;">JusticeConnect</div>
+            <div class="text-white-50 small">Support & Legal Aid</div>
+          </div>
+        </a>
+      </div>
+      <div class="text-white small text-center text-lg-end">
+        <span class="d-block fw-semibold">My Support Dashboard</span>
+        <span class="text-white-50">Your information is private</span>
+      </div>
+    </div>
+
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./survivor.html" class="text-nowrap logo-img d-flex align-items-center">
+            <img src="assets/images/logos/logo.svg" alt="" />
+            <span class="ms-2 fw-semibold">JusticeConnect</span>
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-6"></i>
+          </div>
+        </div>
+
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
+              <span class="hide-menu">MENU</span>
+            </li>
+
+            <!-- Dashboard -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./survivor.html" aria-expanded="false">
+                <i class="ti ti-home-2"></i>
+                <span class="hide-menu">Dashboard</span>
+              </a>
+            </li>
+
+            <!-- My Case -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="#" aria-expanded="false">
+                <i class="ti ti-clipboard-check"></i>
+                <span class="hide-menu">My Case</span>
+              </a>
+            </li>
+
+            <!-- Submit New Request -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="#" aria-expanded="false">
+                <i class="ti ti-file-plus"></i>
+                <span class="hide-menu">Submit New Request</span>
+              </a>
+            </li>
+
+            <!-- Profile -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="#" aria-expanded="false">
+                <i class="ti ti-user"></i>
+                <span class="hide-menu">Profile</span>
+              </a>
+            </li>
+
+            <li>
+              <span class="sidebar-divider lg"></span>
+            </li>
+
+            <li class="nav-small-cap">
+              <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
+              <span class="hide-menu">ACCOUNT</span>
+            </li>
+
+            <!-- Logout -->
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+                <i class="ti ti-logout"></i>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+    </aside>
+    <!--  Sidebar End -->
+
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler " id="headerCollapse" href="javascript:void(0)">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+
+            <!-- notifications -->
+            <li class="nav-item dropdown">
+              <a class="nav-link " href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="ti ti-bell"></i>
+                <div class="notification bg-primary rounded-circle"></div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-animate-up" aria-labelledby="drop1">
+                <div class="message-body">
+                  <a href="javascript:void(0)" class="dropdown-item">
+                    Your case status was updated
+                  </a>
+                  <a href="javascript:void(0)" class="dropdown-item">
+                    A lawyer has been assigned
+                  </a>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+
+              <!-- profile menu -->
+              <li class="nav-item dropdown">
+                <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <img src="./profile/user-3.jpg" alt="" width="35" height="35" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                  <div class="message-body">
+                    <div class="px-3 pb-2 small text-muted">Logged in as</div>
+                    <div class="px-3 pb-2 fw-semibold">You</div>
+
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-user fs-6"></i>
+                      <p class="mb-0 fs-3">Profile & Contact</p>
+                    </a>
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-shield-lock fs-6"></i>
+                      <p class="mb-0 fs-3">Privacy & Safety</p>
+                    </a>
+                    <a href="./index.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                  </div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!--  Header End -->
+
+      <div class="body-wrapper-inner">
+        <div class="container-fluid">
+          <!--  Row 1 -->
+          <div class="row">
+
+            <!-- LEFT MAIN CARD: My Case Status -->
+            <div class="col-lg-8">
+              <div class="card w-100">
+                <div class="card-body">
+                  <div class="d-md-flex align-items-center">
+                    <div>
+                      <h4 class="card-title">My Case Status</h4>
+                      <p class="card-subtitle">
+                        Track progress from request to resolution
+                      </p>
+                    </div>
+                    <div class="ms-auto">
+                      <ul class="list-unstyled mb-0">
+                        <li class="list-inline-item text-primary">
+                          <span class="round-8 text-bg-primary rounded-circle me-1 d-inline-block"></span>
+                          Submitted
+                        </li>
+                        <li class="list-inline-item text-info">
+                          <span class="round-8 text-bg-info rounded-circle me-1 d-inline-block"></span>
+                          In Progress
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- The chart can still reuse #sales-overview -->
+                  <div id="sales-overview" class="mt-4 mx-n6"></div>
+
+                  <div class="mt-4 small text-muted">
+                    Last update: April 14, 2025 • Case ID: JC-2025-017
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT SIDE CARD: My Support Info -->
+            <div class="col-lg-4">
+              <div class="card overflow-hidden">
+                <div class="card-body pb-0">
+                  <div class="d-flex align-items-start">
+                    <div>
+                      <h4 class="card-title">My Support Info</h4>
+                      <p class="card-subtitle">Who is helping you</p>
+                    </div>
+                    <div class="ms-auto">
+                      <div class="dropdown">
+                        <a href="javascript:void(0)" class="text-muted" id="year1-dropdown" data-bs-toggle="dropdown"
+                          aria-expanded="false">
+                          <i class="ti ti-dots fs-7"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="year1-dropdown">
+                          <li>
+                            <a class="dropdown-item" href="javascript:void(0)">View full case</a>
+                          </li>
+                          <li>
+                            <a class="dropdown-item" href="javascript:void(0)">Request update</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Assigned lawyer -->
+                  <div class="mt-4 pb-3 d-flex align-items-center">
+                    <span class="btn btn-primary rounded-circle round-48 hstack justify-content-center">
+                      <i class="ti ti-user-check fs-6"></i>
+                    </span>
+                    <div class="ms-3">
+                      <h5 class="mb-0 fw-bolder fs-4">Assigned Lawyer</h5>
+                      <span class="text-muted fs-3">A. Patel (Family Law)</span>
+                    </div>
+                    <div class="ms-auto">
+                      <span class="badge bg-secondary-subtle text-muted">Active</span>
+                    </div>
+                  </div>
+
+                  <!-- Priority -->
+                  <div class="py-3 d-flex align-items-center">
+                    <span class="btn btn-warning rounded-circle round-48 hstack justify-content-center">
+                      <i class="ti ti-alert-triangle fs-6"></i>
+                    </span>
+                    <div class="ms-3">
+                      <h5 class="mb-0 fw-bolder fs-4">Priority Level</h5>
+                      <span class="text-muted fs-3">High (Safety)</span>
+                    </div>
+                    <div class="ms-auto">
+                      <span class="badge bg-secondary-subtle text-muted">24/7</span>
+                    </div>
+                  </div>
+
+                  <!-- Next step -->
+                  <div class="py-3 d-flex align-items-center">
+                    <span class="btn btn-success rounded-circle round-48 hstack justify-content-center">
+                      <i class="ti ti-calendar-check fs-6"></i>
+                    </span>
+                    <div class="ms-3">
+                      <h5 class="mb-0 fw-bolder fs-4">Next Step</h5>
+                      <span class="text-muted fs-3">Call scheduled: Apr 15, 2pm</span>
+                    </div>
+                    <div class="ms-auto">
+                      <span class="badge bg-secondary-subtle text-muted">Tomorrow</span>
+                    </div>
+                  </div>
+
+                  <!-- Safety -->
+                  <div class="pt-3 mb-7 d-flex align-items-center">
+                    <span class="btn btn-secondary rounded-circle round-48 hstack justify-content-center">
+                      <i class="ti ti-shield-lock fs-6"></i>
+                    </span>
+                    <div class="ms-3">
+                      <h5 class="mb-0 fw-bolder fs-4">Your Privacy</h5>
+                      <span class="text-muted fs-3">We will not share your info without consent.</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- TABLE: My Case Details -->
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-md-flex align-items-center">
+                    <div>
+                      <h4 class="card-title">My Case Details</h4>
+                      <p class="card-subtitle">
+                        Summary of your current request
+                      </p>
+                    </div>
+                    <div class="ms-auto mt-3 mt-md-0">
+                      <select class="form-select theme-select border-0" aria-label="Select case">
+                        <option value="1" selected>Case JC-2025-017</option>
+                        <option value="2">Past Case JC-2024-442</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="table-responsive mt-4">
+                    <table class="table mb-0 text-nowrap varient-table align-middle fs-3">
+                      <thead>
+                        <tr>
+                          <th scope="col" class="px-0 text-muted">Topic</th>
+                          <th scope="col" class="px-0 text-muted">Assigned To</th>
+                          <th scope="col" class="px-0 text-muted">Status</th>
+                          <th scope="col" class="px-0 text-muted text-end">Last Update</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="px-0">
+                            <div class="d-flex align-items-center">
+                              <div class="rounded-circle bg-primary-subtle text-primary hstack justify-content-center round-48 fs-4">
+                                <i class="ti ti-home-heart"></i>
+                              </div>
+                              <div class="ms-3">
+                                <h6 class="mb-0 fw-bolder">Safety / Protection</h6>
+                                <span class="text-muted">Emergency support request</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-0">
+                            A. Patel
+                          </td>
+                          <td class="px-0">
+                            <span class="badge bg-warning">In Review</span>
+                          </td>
+                          <td class="px-0 text-dark fw-medium text-end">
+                            Apr 14, 2025
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="px-0">
+                            <div class="d-flex align-items-center">
+                              <div class="rounded-circle bg-success-subtle text-success hstack justify-content-center round-48 fs-4">
+                                <i class="ti ti-file-description"></i>
+                              </div>
+                              <div class="ms-3">
+                                <h6 class="mb-0 fw-bolder">Paperwork / Forms</h6>
+                                <span class="text-muted">Preparing documentation</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-0">
+                            A. Patel
+                          </td>
+                          <td class="px-0">
+                            <span class="badge bg-success">In Progress</span>
+                          </td>
+                          <td class="px-0 text-dark fw-medium text-end">
+                            Apr 14, 2025
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td class="px-0">
+                            <div class="d-flex align-items-center">
+                              <div class="rounded-circle bg-secondary-subtle text-secondary hstack justify-content-center round-48 fs-4">
+                                <i class="ti ti-headset"></i>
+                              </div>
+                              <div class="ms-3">
+                                <h6 class="mb-0 fw-bolder">Follow-up Call</h6>
+                                <span class="text-muted">Scheduled check-in</span>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="px-0">
+                            You + A. Patel
+                          </td>
+                          <td class="px-0">
+                            <span class="badge text-bg-primary">Scheduled</span>
+                          </td>
+                          <td class="px-0 text-dark fw-medium text-end">
+                            Apr 15, 2025 @ 2pm
+                          </td>
+                        </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- LOWER ROW CARDS -->
+            <div class="col-lg-6">
+              <!-- Card: My Legal Support -->
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title mb-0">My Legal Support</h4>
+                  <p class="text-muted mb-4 fs-3">
+                    Your current lawyer and contact notes
+                  </p>
+
+                  <div class="mb-3 d-flex align-items-start border-bottom pb-3">
+                    <img src="./profile/user-1.jpg" class="rounded-circle" width="48" height="48" alt="lawyer" />
+                    <div class="ms-3 flex-grow-1">
+                      <div class="fw-semibold">A. Patel</div>
+                      <div class="text-muted small">Family Law • Licensed (ON)</div>
+                      <div class="badge bg-success-subtle text-success mt-2">Active on your case</div>
+                    </div>
+                    <div class="text-end small text-muted">
+                      Next call:<br> Apr 15, 2pm
+                    </div>
+                  </div>
+
+                  <div class="mb-3 d-flex align-items-start border-bottom pb-3">
+                    <div class="rounded-circle bg-warning-subtle text-warning hstack justify-content-center round-48 fs-4">
+                      <i class="ti ti-mail-forward"></i>
+                    </div>
+                    <div class="ms-3 flex-grow-1">
+                      <div class="fw-semibold">Need to send documents?</div>
+                      <div class="text-muted small">We’ll explain what’s needed and why.</div>
+                      <div class="badge bg-warning-subtle text-warning mt-2">No rush • we can help</div>
+                    </div>
+                    <div class="text-end small text-muted">
+                      Upload link<br>coming soon
+                    </div>
+                  </div>
+
+                  <div class="d-flex align-items-start">
+                    <div class="rounded-circle bg-secondary-subtle text-secondary hstack justify-content-center round-48 fs-4">
+                      <i class="ti ti-shield-lock"></i>
+                    </div>
+                    <div class="ms-3 flex-grow-1">
+                      <div class="fw-semibold">Your privacy matters</div>
+                      <div class="text-muted small">Only your assigned support team can view details.</div>
+                      <div class="badge bg-secondary-subtle text-secondary mt-2">Confidential</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <!-- Card: Safety & Resources -->
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex align-items-center">
+                    <h4 class="card-title mb-0">Safety & Resources</h4>
+                    <select class="form-select w-auto ms-auto">
+                      <option selected="">Quick Help</option>
+                      <option value="1">Legal Info</option>
+                      <option value="2">Emergency</option>
+                    </select>
+                  </div>
+
+                  <div class="d-flex align-items-center flex-row mt-4">
+                    <div class="p-2 display-5 text-primary">
+                      <i class="ti ti-shield-heart"></i>
+                    </div>
+                    <div class="p-2">
+                      <h3 class="mb-0">Are you safe right now?</h3>
+                      <small>If you are in danger, please call local emergency services.</small>
+                    </div>
+                  </div>
+
+                  <table class="table table-borderless">
+                    <tbody>
+                      <tr>
+                        <td>Emergency Support Line</td>
+                        <td class="fw-medium text-end">###-###-####</td>
+                      </tr>
+                      <tr>
+                        <td>24/7 Crisis Support</td>
+                        <td class="fw-medium text-end">Chat / Phone</td>
+                      </tr>
+                      <tr>
+                        <td>Safe Exit Tips Shared</td>
+                        <td class="fw-medium text-end text-danger">Yes</td>
+                      </tr>
+                      <tr>
+                        <td>Safety Planning Call</td>
+                        <td class="fw-medium text-end">Scheduled</td>
+                      </tr>
+                      <tr>
+                        <td>Local Shelter Info</td>
+                        <td class="fw-medium text-end">Ready</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <hr />
+
+                  <ul class="list-unstyled row text-center city-weather-days mb-0">
+                    <li class="col">
+                      <i class="ti ti-phone-call fs-4"></i><span>Emergency</span>
+                      <h3 class="mb-0 fs-6 lh-base">Call local 911 / emergency services</h3>
+                    </li>
+                    <li class="col">
+                      <i class="ti ti-user-shield fs-4"></i><span>Privacy</span>
+                      <h3 class="mb-0 fs-6 lh-base">We do not share without consent</h3>
+                    </li>
+                    <li class="col">
+                      <i class="ti ti-door-exit fs-4"></i><span>Quick Exit</span>
+                      <h3 class="mb-0 fs-6 lh-base">Close this tab fast if needed</h3>
+                    </li>
+                    <li class="col">
+                      <i class="ti ti-heart-handshake fs-4"></i><span>You’re not alone</span>
+                      <h3 class="mb-0 fs-6 lh-base">We’re here to help</h3>
+                    </li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="py-6 px-6 text-center">
+            <p class="mb-0 fs-4">
+              JusticeConnect • You’re in control of your information
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- scripts -->
+  <!-- <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./assets/js/sidebarmenu.js"></script>
+  <script src="./assets/js/app.min.js"></script>
+  <script src="./assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="./assets/libs/simplebar/dist/simplebar.js"></script> -->
+
+  <!-- You can reuse dashboard.js, but rename series to "Submitted" / "In Progress" -->
+  <script src="./assets/js/dashboard.js"></script>
+
+  <!-- icons -->
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+</body>
+</html>
