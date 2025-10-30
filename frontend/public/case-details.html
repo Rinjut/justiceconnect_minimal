@@ -7,415 +7,240 @@
   <link rel="shortcut icon" type="image/png" href="./assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="./assets/libs/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="./css/styles.min.css" />
-  <style>
-    .key { color:#6c757d; font-size:.9rem; }
-    .value { font-weight:600; }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-    .badge-soft { background: #f6f7f9; color:#495057; border: 1px solid #e9ecef; }
-    .dl-grid { display:grid; grid-template-columns: 220px 1fr; row-gap:.4rem; }
-    @media (max-width: 768px){ .dl-grid{ grid-template-columns: 1fr; } }
-    .heading-xs { font-size:.875rem; letter-spacing:.02em; color:#6c757d; }
-  </style>
+  <link rel="stylesheet" href="./css/case-details.css" />
 </head>
 <body class="bg-light">
 
-<!-- Top bar -->
-<nav class="navbar navbar-light bg-white shadow-sm">
-  <div class="container-fluid">
-    <a class="navbar-brand d-flex align-items-center" href="admin.html">
-      <img src="assets/images/logos/logo.svg" alt="" height="24" class="me-2">
-      <span class="fw-semibold">JusticeConnect Admin</span>
-    </a>
-    <div class="d-flex gap-2">
-      <a id="backLink" href="admin.html" class="btn btn-outline-secondary btn-sm">← Back to Queue</a>
-    </div>
-  </div>
-</nav>
-
-<main class="container my-4">
-
-  <!-- Header -->
-  <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
-    <div>
-      <h3 class="mb-0">Case Details</h3>
-      <div class="text-muted" id="cd-caseId">Case: —</div>
-    </div>
-    <div class="d-flex align-items-center gap-2">
-      <span id="priorityPill" class="badge badge-soft"></span>
-      <span id="statusPill" class="badge badge-soft"></span>
-    </div>
-  </div>
-
-  <div class="row g-4">
-    <!-- LEFT: All case/request details -->
-    <div class="col-lg-8">
-      <!-- Case summary -->
-      <div class="card shadow-sm border-0 mb-4">
-        <div class="card-body">
-          <h5 class="card-title mb-3">Summary</h5>
-
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="key">Survivor (preferred name)</div>
-              <div class="value" id="cd-name">—</div>
-              <div class="text-muted small" id="cd-location">—</div>
-            </div>
-            <div class="col-md-3">
-              <div class="key">Issue category</div>
-              <div class="value" id="cd-category">—</div>
-            </div>
-            <div class="col-md-3">
-              <div class="key">Submitted</div>
-              <div class="value" id="cd-created">—</div>
-            </div>
-          </div>
-
-          <hr class="my-4">
-
-          <div>
-            <div class="key mb-1">Case description</div>
-            <p id="cd-desc" class="mb-0">—</p>
-          </div>
-        </div>
+  <!-- Top bar -->
+  <nav class="navbar navbar-light bg-white shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="admin.html">
+        <img src="assets/images/logos/logo.svg" alt="" height="24" class="me-2" />
+        <span class="fw-semibold">JusticeConnect Admin</span>
+      </a>
+      <div class="d-flex gap-2">
+        <a id="backLink" href="admin.html" class="btn btn-outline-secondary btn-sm">← Back to Queue</a>
       </div>
+    </div>
+  </nav>
 
-      <!-- Detailed request (all fields from submit form) -->
-      <div class="card shadow-sm border-0 mb-4">
-        <div class="card-body">
-          <h5 class="card-title mb-3">Request Details</h5>
-
-          <!-- Contact -->
-          <div class="mb-3">
-            <div class="heading-xs mb-2">Contact</div>
-            <div class="dl-grid">
-              <div class="key">Preferred contact method</div>
-              <div id="rd-contactMethod" class="value">—</div>
-
-              <div class="key">Contact (email/phone)</div>
-              <div id="rd-contactValue" class="value">—</div>
-
-              <div class="key">Safe to contact?</div>
-              <div id="rd-safe" class="value">—</div>
-            </div>
-          </div>
-
-          <hr>
-
-          <!-- Location & language -->
-          <div class="mb-3">
-            <div class="heading-xs mb-2">Location & Language</div>
-            <div class="dl-grid">
-              <div class="key">Province/Territory</div>
-              <div id="rd-province" class="value">—</div>
-
-              <div class="key">City/Town</div>
-              <div id="rd-city" class="value">—</div>
-
-              <div class="key">Preferred language</div>
-              <div id="rd-language" class="value">—</div>
-            </div>
-          </div>
-
-          <hr>
-
-          <!-- Issue -->
-          <div class="mb-3">
-            <div class="heading-xs mb-2">Issue</div>
-            <div class="dl-grid">
-              <div class="key">Issue category</div>
-              <div id="rd-issueCategory" class="value">—</div>
-
-              <div class="key">Desired outcome</div>
-              <div id="rd-desiredOutcome" class="value">—</div>
-
-              <div class="key">Brief situation</div>
-              <div id="rd-situation" class="">—</div>
-            </div>
-          </div>
-
-          <hr>
-
-          <!-- Urgency & safety -->
-          <div class="mb-3">
-            <div class="heading-xs mb-2">Urgency & Safety</div>
-            <div class="dl-grid">
-              <div class="key">Urgency</div>
-              <div id="rd-urgency" class="value">—</div>
-
-              <div class="key">Immediate safety concerns?</div>
-              <div id="rd-safetyConcern" class="value">—</div>
-            </div>
-          </div>
-
-          <hr>
-
-          <!-- Preferences -->
-          <div class="mb-3">
-            <div class="heading-xs mb-2">Preferences</div>
-            <div class="dl-grid">
-              <div class="key">Best time to contact</div>
-              <div id="rd-contactTimes" class="value">—</div>
-
-              <div class="key">Accessibility / support needs</div>
-              <div id="rd-accessNeeds" class="">—</div>
-
-              <div class="key">Confidential notes for staff</div>
-              <div id="rd-confidentialNotes" class="">—</div>
-            </div>
-          </div>
-
-          <hr>
-
-          <!-- Attachments -->
-          <div class="mb-1">
-            <div class="heading-xs mb-2">Attachments</div>
-            <ul id="rd-attachments" class="list-unstyled mb-0 small text-muted">
-              <li>—</li>
-            </ul>
-            <div class="text-muted small mt-1">Note: attachments are stored securely; only authorized staff can access.</div>
-          </div>
-        </div>
+  <main class="container my-4">
+    <!-- Header -->
+    <div class="d-flex flex-wrap align-items-center justify-content-between mb-3">
+      <div>
+        <h3 class="mb-0">Case Details</h3>
+        <div class="text-muted" id="cd-caseId">Case: —</div>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span id="priorityPill" class="badge badge-soft"></span>
+        <span id="statusPill" class="badge badge-soft"></span>
       </div>
     </div>
 
-    <!-- RIGHT: Assign to lawyer -->
-    <div class="col-lg-4">
-      <div class="card shadow-sm border-0">
-        <div class="card-body">
-          <h5 class="card-title mb-3">Assign to Lawyer</h5>
-
-          <div id="assignSuccess" class="alert alert-success d-none" role="alert">
-            Assignment saved. Redirecting to queue…
-          </div>
-          <div id="assignError" class="alert alert-danger d-none" role="alert">
-            Unable to save assignment. Please try again.
-          </div>
-
-          <form id="assignForm" novalidate>
-            <div class="mb-3">
-              <label class="form-label">Case</label>
-              <input type="text" id="as-selected" class="form-control" disabled />
-            </div>
-
-            <div class="mb-3">
-              <label for="as-lawyer" class="form-label">Lawyer</label>
-              <select class="form-select" id="as-lawyer" required>
-                <option value="" selected disabled>Choose a lawyer…</option>
-                <option value="A. Patel (Family Law)">A. Patel (Family Law)</option>
-                <option value="R. Chen (Housing)">R. Chen (Housing)</option>
-                <option value="K. Singh (Employment)">K. Singh (Employment)</option>
-              </select>
-              <div class="invalid-feedback">Please choose a lawyer.</div>
-            </div>
+    <div class="row g-4">
+      <!-- LEFT: All case/request details -->
+      <div class="col-lg-8">
+        <!-- Case summary -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Summary</h5>
 
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="as-priority" class="form-label">Priority</label>
-                <select id="as-priority" class="form-select" required>
-                  <option>Low</option>
-                  <option>Medium</option>
-                  <option selected>High</option>
-                </select>
-                <div class="invalid-feedback">Please set priority.</div>
+                <div class="key">Survivor (preferred name)</div>
+                <div class="value" id="cd-name">—</div>
+                <div class="text-muted small" id="cd-location">—</div>
               </div>
-              <div class="col-md-6">
-                <label for="as-status" class="form-label">Status</label>
-                <select id="as-status" class="form-select" required>
-                  <option>Submitted</option>
-                  <option selected>In Review</option>
-                  <option>Assigned</option>
-                </select>
-                <div class="invalid-feedback">Please set status.</div>
+              <div class="col-md-3">
+                <div class="key">Issue category</div>
+                <div class="value" id="cd-category">—</div>
+              </div>
+              <div class="col-md-3">
+                <div class="key">Submitted</div>
+                <div class="value" id="cd-created">—</div>
               </div>
             </div>
 
-            <div class="mt-3">
-              <label for="as-notes" class="form-label">Internal notes (optional)</label>
-              <textarea id="as-notes" class="form-control" rows="3" placeholder="Anything the lawyer should know."></textarea>
+            <hr class="my-4" />
+
+            <div>
+              <div class="key mb-1">Case description</div>
+              <p id="cd-desc" class="mb-0">—</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed request (all fields from submit form) -->
+        <div class="card shadow-sm border-0 mb-4">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Request Details</h5>
+
+            <!-- Contact -->
+            <div class="mb-3">
+              <div class="heading-xs mb-2">Contact</div>
+              <div class="dl-grid">
+                <div class="key">Preferred contact method</div>
+                <div id="rd-contactMethod" class="value">—</div>
+
+                <div class="key">Contact (email/phone)</div>
+                <div id="rd-contactValue" class="value">—</div>
+
+                <div class="key">Safe to contact?</div>
+                <div id="rd-safe" class="value">—</div>
+              </div>
             </div>
 
-            <div class="d-grid mt-4">
-              <button class="btn btn-primary" type="submit">
-                <i class="ti ti-user-check me-1"></i> Confirm Assignment
-              </button>
-            </div>
-          </form>
+            <hr />
 
-          <hr class="my-4">
-          <a id="backLink2" href="admin.html" class="btn btn-outline-secondary w-100">← Back to Queue</a>
+            <!-- Location & language -->
+            <div class="mb-3">
+              <div class="heading-xs mb-2">Location & Language</div>
+              <div class="dl-grid">
+                <div class="key">Province/Territory</div>
+                <div id="rd-province" class="value">—</div>
+
+                <div class="key">City/Town</div>
+                <div id="rd-city" class="value">—</div>
+
+                <div class="key">Preferred language</div>
+                <div id="rd-language" class="value">—</div>
+              </div>
+            </div>
+
+            <hr />
+
+            <!-- Issue -->
+            <div class="mb-3">
+              <div class="heading-xs mb-2">Issue</div>
+              <div class="dl-grid">
+                <div class="key">Issue category</div>
+                <div id="rd-issueCategory" class="value">—</div>
+
+                <div class="key">Desired outcome</div>
+                <div id="rd-desiredOutcome" class="value">—</div>
+
+                <div class="key">Brief situation</div>
+                <div id="rd-situation">—</div>
+              </div>
+            </div>
+
+            <hr />
+
+            <!-- Urgency & safety -->
+            <div class="mb-3">
+              <div class="heading-xs mb-2">Urgency & Safety</div>
+              <div class="dl-grid">
+                <div class="key">Urgency</div>
+                <div id="rd-urgency" class="value">—</div>
+
+                <div class="key">Immediate safety concerns?</div>
+                <div id="rd-safetyConcern" class="value">—</div>
+              </div>
+            </div>
+
+            <hr />
+
+            <!-- Preferences -->
+            <div class="mb-3">
+              <div class="heading-xs mb-2">Preferences</div>
+              <div class="dl-grid">
+                <div class="key">Best time to contact</div>
+                <div id="rd-contactTimes" class="value">—</div>
+
+                <div class="key">Accessibility / support needs</div>
+                <div id="rd-accessNeeds">—</div>
+
+                <div class="key">Confidential notes for staff</div>
+                <div id="rd-confidentialNotes">—</div>
+              </div>
+            </div>
+
+            <hr />
+
+            <!-- Attachments -->
+            <div class="mb-1">
+              <div class="heading-xs mb-2">Attachments</div>
+              <ul id="rd-attachments" class="list-unstyled mb-0 small text-muted">
+                <li>—</li>
+              </ul>
+              <div class="text-muted small mt-1">Note: attachments are stored securely; only authorized staff can access.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Assign to lawyer -->
+      <div class="col-lg-4">
+        <div class="card shadow-sm border-0">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Assign to Lawyer</h5>
+
+            <div id="assignSuccess" class="alert alert-success d-none" role="alert">
+              Assignment saved. Redirecting to queue…
+            </div>
+            <div id="assignError" class="alert alert-danger d-none" role="alert">
+              Unable to save assignment. Please try again.
+            </div>
+
+            <form id="assignForm" novalidate>
+              <div class="mb-3">
+                <label class="form-label">Case</label>
+                <input type="text" id="as-selected" class="form-control" disabled />
+              </div>
+
+              <div class="mb-3">
+                <label for="as-lawyer" class="form-label">Lawyer</label>
+                <select class="form-select" id="as-lawyer" required>
+                  <option value="" selected disabled>Choose a lawyer…</option>
+                  <option value="A. Patel (Family Law)">A. Patel (Family Law)</option>
+                  <option value="R. Chen (Housing)">R. Chen (Housing)</option>
+                  <option value="K. Singh (Employment)">K. Singh (Employment)</option>
+                </select>
+                <div class="invalid-feedback">Please choose a lawyer.</div>
+              </div>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="as-priority" class="form-label">Priority</label>
+                  <select id="as-priority" class="form-select" required>
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option selected>High</option>
+                  </select>
+                  <div class="invalid-feedback">Please set priority.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="as-status" class="form-label">Status</label>
+                  <select id="as-status" class="form-select" required>
+                    <option>Submitted</option>
+                    <option selected>In Review</option>
+                    <option>Assigned</option>
+                  </select>
+                  <div class="invalid-feedback">Please set status.</div>
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <label for="as-notes" class="form-label">Internal notes (optional)</label>
+                <textarea id="as-notes" class="form-control" rows="3" placeholder="Anything the lawyer should know."></textarea>
+              </div>
+
+              <div class="d-grid mt-4">
+                <button class="btn btn-primary" type="submit">
+                  Confirm Assignment
+                </button>
+              </div>
+            </form>
+
+            <hr class="my-4" />
+            <a id="backLink2" href="admin.html" class="btn btn-outline-secondary w-100">← Back to Queue</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
 
-<script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  // ===== Helpers =====
-  const qs = (k) => new URLSearchParams(location.search).get(k);
-  const fmtYN = (b) => b ? "Yes" : "No";
-  const fmtDateTime = (iso) => iso ? new Date(iso).toLocaleString() : "—";
-  const priorityBadge = (p) => {
-    const map = { High: "warning text-dark", Medium: "info text-dark", Low: "secondary" };
-    const cls = map[p] || "secondary";
-    return `<span class="badge bg-${cls}">${p}</span>`;
-  };
-
-  // ===== Replace this MOCK with your API fetch by caseId =====
-  const MOCK_CASES = {
-    "JC-2025-001": {
-      // Core case fields
-      caseId: "JC-2025-001",
-      status: "Submitted",
-      priority: "High",
-      created: "2025-10-29T09:30:00Z",
-      issueCategory: "Housing",
-      description: "Facing urgent eviction; needs emergency housing support and legal advice. Landlord notice received yesterday.",
-
-      // Fields from "New Case Request" form
-      preferredName: "Ann",
-      contactMethod: "Phone",
-      contactValue: "+1 (555) 555-0101",
-      safeToContact: true,
-
-      province: "Northwest Territories",
-      city: "",
-      language: "English",
-
-      desiredOutcome: "Urgent advice; stop eviction if possible",
-      situation: "Received a notice to vacate within 7 days; single parent with two children.",
-      urgency: "High",
-      safetyConcern: false,
-
-      contactTimes: "Evenings",
-      accessNeeds: "",
-      confidentialNotes: "Call after 6pm only.",
-
-      attachments: [
-        { name: "eviction_notice.pdf", url: "#" },
-        { name: "rent_receipts_may-sep.pdf", url: "#" }
-      ]
-    }
-  };
-
-  async function loadCase(caseId) {
-    // Example for real world:
-    // const res = await fetch(`/api/cases/${encodeURIComponent(caseId)}`);
-    // if (!res.ok) throw new Error("Network error");
-    // return await res.json();
-    return MOCK_CASES[caseId] || null;
-  }
-
-  (async function init() {
-    const caseId = qs("caseId");
-    const back = "admin.html";
-    document.getElementById("backLink").href = back;
-    document.getElementById("backLink2").href = back;
-
-    if (!caseId) {
-      document.querySelector("main").innerHTML = '<div class="alert alert-danger mt-4">Missing <code>caseId</code>.</div>';
-      return;
-    }
-
-    const data = await loadCase(caseId);
-    if (!data) {
-      document.querySelector("main").innerHTML = '<div class="alert alert-danger mt-4">Case not found.</div>';
-      return;
-    }
-
-    // Header
-    document.getElementById("cd-caseId").textContent = `Case: ${data.caseId}`;
-    document.getElementById("priorityPill").innerHTML = priorityBadge(data.priority || "—");
-    document.getElementById("statusPill").textContent = data.status || "—";
-
-    // Summary
-    document.getElementById("cd-name").textContent = data.preferredName || "—";
-    const locBits = [data.province, data.city].filter(Boolean);
-    document.getElementById("cd-location").textContent = locBits.join(" • ") || "—";
-    document.getElementById("cd-category").textContent = data.issueCategory || "—";
-    document.getElementById("cd-created").textContent = fmtDateTime(data.created);
-    document.getElementById("cd-desc").textContent = data.description || data.situation || "—";
-
-    // Request Details — Contact
-    document.getElementById("rd-contactMethod").textContent = data.contactMethod || "—";
-    document.getElementById("rd-contactValue").textContent = data.contactValue || "—";
-    document.getElementById("rd-safe").textContent = fmtYN(!!data.safeToContact);
-
-    // Location & Language
-    document.getElementById("rd-province").textContent = data.province || "—";
-    document.getElementById("rd-city").textContent = data.city || "—";
-    document.getElementById("rd-language").textContent = data.language || "—";
-
-    // Issue
-    document.getElementById("rd-issueCategory").textContent = data.issueCategory || "—";
-    document.getElementById("rd-desiredOutcome").textContent = data.desiredOutcome || "—";
-    document.getElementById("rd-situation").textContent = data.situation || "—";
-
-    // Urgency & Safety
-    document.getElementById("rd-urgency").textContent = data.urgency || data.priority || "—";
-    document.getElementById("rd-safetyConcern").textContent = fmtYN(!!data.safetyConcern);
-
-    // Preferences
-    document.getElementById("rd-contactTimes").textContent = data.contactTimes || "—";
-    document.getElementById("rd-accessNeeds").textContent = data.accessNeeds || "—";
-    document.getElementById("rd-confidentialNotes").textContent = data.confidentialNotes || "—";
-
-    // Attachments
-    const list = document.getElementById("rd-attachments");
-    list.innerHTML = "";
-    if (Array.isArray(data.attachments) && data.attachments.length) {
-      data.attachments.forEach(f => {
-        const li = document.createElement("li");
-        li.innerHTML = f.url && f.url !== "#"
-          ? `<a href="${f.url}" class="link-primary mono">${f.name}</a>`
-          : `<span class="mono">${f.name}</span>`;
-        list.appendChild(li);
-      });
-    } else {
-      list.innerHTML = "<li>—</li>";
-    }
-
-    // Assign form defaults
-    document.getElementById("as-selected").value =
-      `${data.caseId} — ${data.preferredName || "Survivor"} (${data.issueCategory || "Case"})`;
-    document.getElementById("as-priority").value = data.priority || "Medium";
-    document.getElementById("as-status").value = data.status || "In Review";
-
-    // Assign submit (replace with API)
-    const form = document.getElementById("assignForm");
-    const ok = document.getElementById("assignSuccess");
-    const err = document.getElementById("assignError");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      err.classList.add("d-none");
-      ok.classList.add("d-none");
-      if (!form.checkValidity()) {
-        form.classList.add("was-validated");
-        return;
-      }
-
-      const payload = {
-        caseId: data.caseId,
-        lawyer: document.getElementById("as-lawyer").value,
-        priority: document.getElementById("as-priority").value,
-        status: document.getElementById("as-status").value,
-        notes: document.getElementById("as-notes").value
-      };
-
-      try {
-        // const res = await fetch('/api/admin/assign', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-        // if (!res.ok) throw new Error('Network error');
-
-        // Demo success:
-        ok.classList.remove("d-none");
-        setTimeout(() => { window.location.href = "admin.html?assigned=" + encodeURIComponent(data.caseId); }, 1200);
-      } catch (ex) {
-        err.textContent = "Unable to save assignment. Please try again.";
-        err.classList.remove("d-none");
-      }
-    });
-  })();
-</script>
+  <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/case-details.js" defer></script>
 </body>
 </html>

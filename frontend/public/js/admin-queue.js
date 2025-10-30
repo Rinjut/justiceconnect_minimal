@@ -27,6 +27,11 @@
         <td class="px-0">${caseId}</td>
         <td class="px-0"><span class="badge ${badgeClass}">${badgeText}</span></td>
         <td class="px-0 text-dark fw-medium text-end">${rowStatus}</td>
+        <td class="text-end">
+            <a class="btn btn-sm btn-primary" href="case-details.html?caseId=${encodeURIComponent(item.caseId)}">
+            View / Assign
+            </a>
+        </td>
       </tr>
     `;
   }

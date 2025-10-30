@@ -78,6 +78,8 @@ app.use('/api/cases', casesRoutes);
 app.use('/api', apiRoutes);
 const adminRoutes = require('./routes/admin.routes');
 app.use('/api/admin', adminRoutes); 
+const adminCasesRoutes = require('./routes/admin.cases');
+app.use('/api/admin', adminCasesRoutes);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`JusticeConnect running at http://localhost:${port}`));

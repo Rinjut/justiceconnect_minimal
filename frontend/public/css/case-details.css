@@ -1,0 +1,10 @@
+.key { color:#6c757d; font-size:.9rem; }
+.value { font-weight:600; }
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+               "Liberation Mono","Courier New", monospace;
+}
+.badge-soft { background:#f6f7f9; color:#495057; border:1px solid #e9ecef; }
+.dl-grid { display:grid; grid-template-columns:220px 1fr; row-gap:.4rem; }
+@media (max-width:768px){ .dl-grid{ grid-template-columns:1fr; } }
+.heading-xs { font-size:.875rem; letter-spacing:.02em; color:#6c757d; }
