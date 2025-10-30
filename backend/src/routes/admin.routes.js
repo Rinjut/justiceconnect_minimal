@@ -5,9 +5,9 @@ const CaseRequest = require('../models/CaseRequest');
 
 function priorityBadge(urgency) {
   const u = String(urgency || '').toLowerCase();
-  if (u === 'high')   return { label: 'High', class: 'bg-warning' };
-  if (u === 'medium') return { label: 'Medium', class: 'text-bg-primary' };
-  return { label: 'Low', class: 'bg-success' };
+  if (u === 'high')   return { label: 'High', class: 'bg-danger' };
+  if (u === 'medium') return { label: 'Medium', class: 'bg-warning' };
+  return { label: 'Low', class: 'text-bg-primary' };
 }
 
 function makeCaseInsensitiveRegexes(list) {
