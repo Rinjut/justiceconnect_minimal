@@ -76,6 +76,8 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.use('/api/auth', authRoutes);
 app.use('/api/cases', casesRoutes);
 app.use('/api', apiRoutes);
+const adminRoutes = require('./routes/admin.routes');
+app.use('/api/admin', adminRoutes); 
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`JusticeConnect running at http://localhost:${port}`));

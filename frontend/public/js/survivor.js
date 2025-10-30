@@ -167,7 +167,10 @@
 
   // Nav cleanup (CSP safe)
   document.querySelectorAll('a[href^="javascript:"]').forEach(a => a.setAttribute('href', '#'));
-
+  $('#btnLogout, #btnLogoutTop').on('click', function (e) {
+    e.preventDefault();
+    if (typeof logout === 'function') logout();
+  });
   // Optional: sidebar toggle if your theme script isn’t active
   const headerCollapse = document.getElementById('headerCollapse');
   const sidebarCollapse = document.getElementById('sidebarCollapse');

@@ -316,88 +316,16 @@
                     <table class="table mb-0 text-nowrap varient-table align-middle fs-3">
                       <thead>
                         <tr>
-                          <th scope="col" class="px-0 text-muted">Survivor</th>
-                          <th scope="col" class="px-0 text-muted">Case ID</th>
-                          <th scope="col" class="px-0 text-muted">Priority</th>
-                          <th scope="col" class="px-0 text-muted text-end">Status</th>
+                          <th class="px-0 text-muted">Survivor</th>
+                          <th class="px-0 text-muted">Case ID</th>
+                          <th class="px-0 text-muted">Priority</th>
+                          <th class="px-0 text-muted text-end">Status</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody id="queue-tbody">
                         <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <img src="./profile/user-3.jpg" class="rounded-circle" width="40" alt="profile" />
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">Anonymous Survivor</h6>
-                                <span class="text-muted">Ontario • Family Law</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">JC-2025-016</td>
-                          <td class="px-0"><span class="badge bg-danger">High</span></td>
-                          <td class="px-0 text-dark fw-medium text-end">Needs assignment</td>
+                          <td colspan="4" class="text-muted small">Loading…</td>
                         </tr>
-
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <img src="./profile/user-5.jpg" class="rounded-circle" width="40" alt="profile" />
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">J. D.</h6>
-                                <span class="text-muted">Alberta • Housing</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">JC-2025-017</td>
-                          <td class="px-0"><span class="badge text-bg-primary">Medium</span></td>
-                          <td class="px-0 text-dark fw-medium text-end">Reviewing intake</td>
-                        </tr>
-
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <img src="./profile/user-6.jpg" class="rounded-circle" width="40" alt="profile" />
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">Confidential</h6>
-                                <span class="text-muted">Ontario • Family Safety</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">JC-2025-018</td>
-                          <td class="px-0"><span class="badge bg-warning">High</span></td>
-                          <td class="px-0 text-dark fw-medium text-end">Assigned to review</td>
-                        </tr>
-
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <img src="./profile/user-7.jpg" class="rounded-circle" width="40" alt="profile" />
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">A. S.</h6>
-                                <span class="text-muted">BC • Employment</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">JC-2025-019</td>
-                          <td class="px-0"><span class="badge bg-success">Low</span></td>
-                          <td class="px-0 text-dark fw-medium text-end">Waiting lawyer accept</td>
-                        </tr>
-
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <img src="./profile/user-8.jpg" class="rounded-circle" width="40" alt="profile" />
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">M. R.</h6>
-                                <span class="text-muted">Ontario • Benefits</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">JC-2025-020</td>
-                          <td class="px-0"><span class="badge bg-success">Low</span></td>
-                          <td class="px-0 text-dark fw-medium text-end">Assigned to Patel</td>
-                        </tr>
-
                       </tbody>
                     </table>
                   </div>
@@ -542,5 +470,6 @@
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/admin.js"></script>
+  <script src="js/admin-queue.js"></script>
 </body>
 </html>
