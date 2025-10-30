@@ -7,13 +7,13 @@ const fs = require('fs');
 const { body, validationResult } = require('express-validator');
 const CaseRequest = require('../models/CaseRequest');
 
-// --- Auth guard ---
+// Auth guard
 function mustBeLoggedIn(req, res, next) {
   if (!req.user) return res.status(401).json({ message: 'Not logged in' });
   next();
 }
 
-// --- Upload (local /uploads) ---
+// Upload config (/uploads)
 const uploadDir = path.join(process.cwd(), 'uploads');
 if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 
@@ -45,7 +45,7 @@ const upload = multer({
   limits: { files: 5, fileSize: 10 * 1024 * 1024 }, // 5 files, 10MB each
 });
 
-// --- Validators ---
+// Validators
 const validateCreate = [
   body('preferredName').trim().notEmpty().withMessage('Preferred name is required'),
   body('contactMethod').isIn(['email','phone','sms','in-app']).withMessage('Select a contact method'),
@@ -55,7 +55,7 @@ const validateCreate = [
   body('urgency').isIn(['Low','Medium','High']).withMessage('Please choose urgency'),
 ];
 
-// --- Optional: human-friendly caseId like JC-YYYY-###
+// Generate human-friendly caseId (JC-YYYY-###)
 async function nextCaseId() {
   const year = new Date().getFullYear();
   const prefix = `JC-${year}-`;
@@ -71,14 +71,13 @@ async function nextCaseId() {
   return prefix + String(n).padStart(3, '0');
 }
 
-// --- POST /api/cases/request ---
+// POST /api/cases/request
 router.post(
   '/request',
   mustBeLoggedIn,
   upload.array('attachments', 5),
   validateCreate,
   async (req, res) => {
-    // validator errors → field map
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       const byField = {};
@@ -137,5 +136,50 @@ router.post(
     }
   }
 );
+
+// GET /api/cases/mine
+router.get('/mine', mustBeLoggedIn, async (req, res) => {
+  try {
+    const userId = req.user?._id || req.user?.id;
+    if (!userId) return res.status(401).json({ message: 'Session missing user id' });
+
+    const limit = Math.min(parseInt(req.query.limit || '10', 10), 50);
+    const page  = Math.max(parseInt(req.query.page || '1', 10), 1);
+    const skip  = (page - 1) * limit;
+
+    const [items, total] = await Promise.all([
+      CaseRequest.find({ user: userId })
+        .sort({ updatedAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .select('caseId status situation desiredOutcome updatedAt issueCategory')
+        .lean(),
+      CaseRequest.countDocuments({ user: userId })
+    ]);
+
+    res.json({ items, total, page, limit });
+  } catch (err) {
+    console.warn('List my cases error:', err);
+    res.status(500).json({ message: 'Server error.' });
+  }
+});
+
+// GET /api/cases/latest
+router.get('/latest', mustBeLoggedIn, async (req, res) => {
+  try {
+    const userId = req.user?._id || req.user?.id;
+    if (!userId) return res.status(401).json({ message: 'Session missing user id' });
+
+    const doc = await CaseRequest.findOne({ user: userId })
+      .sort({ updatedAt: -1 })
+      .select('caseId status situation desiredOutcome updatedAt issueCategory')
+      .lean();
+
+    res.json({ case: doc || null });
+  } catch (err) {
+    console.warn('Get latest case error:', err);
+    res.status(500).json({ message: 'Server error.' });
+  }
+});
 
 module.exports = router;

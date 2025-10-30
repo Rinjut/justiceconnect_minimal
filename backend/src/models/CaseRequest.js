@@ -42,7 +42,7 @@ const CaseRequestSchema = new mongoose.Schema({
 
   // System
   status: { type: String, enum: ['Submitted', 'Review', 'Assigned', 'Closed'], default: 'Submitted', index: true },
-  caseId: { type: String, unique: true, sparse: true }, // optional human-friendly id
+  caseId: { type: String, unique: true, sparse: true }, // e.g., JC-2025-017
 }, { timestamps: true });
 
 module.exports = mongoose.model('CaseRequest', CaseRequestSchema);

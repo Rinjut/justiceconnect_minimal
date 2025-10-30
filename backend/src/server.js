@@ -10,25 +10,22 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
-const connectDB = require('./config/db');
-
-// Routes
+const connectDB   = require('./config/db');
 const authRoutes  = require('./routes/auth');
 const apiRoutes   = require('./routes/api');
-const casesRoutes = require('./routes/cases.routes'); // <-- add this
+const casesRoutes = require('./routes/cases.routes');
 
 const app = express();
 
-// DB
+// Connect DB
 connectDB();
 
-// Helmet + CSP: local assets only, no inline
+// Security headers (local assets only; no inline)
 app.use(helmet({
   crossOriginEmbedderPolicy: false,
   crossOriginOpenerPolicy: { policy: 'same-origin' },
   crossOriginResourcePolicy: { policy: 'same-origin' },
 }));
-
 app.use(helmet.contentSecurityPolicy({
   useDefaults: true,
   directives: {
@@ -44,13 +41,13 @@ app.use(helmet.contentSecurityPolicy({
   }
 }));
 
-// logging + parsers
+// Logging + parsers
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// CORS (if frontend on same origin this is harmless)
+// CORS (harmless if frontend served by same app)
 app.use(cors({ origin: true, credentials: true }));
 
 // Sessions
@@ -62,22 +59,22 @@ app.use(session({
   cookie: { httpOnly: true, sameSite: 'lax' }
 }));
 
-// Normalize req.user from session (fixes id vs _id)
+// Normalize req.user from session (handles id vs _id)
 app.use((req, _res, next) => {
   if (req.session && req.session.user) {
     req.user = { ...req.session.user };
-    if (req.user.id && !req.user._id) req.user._id = req.user.id; // normalize
+    if (req.user.id && !req.user._id) req.user._id = req.user.id;
   }
   next();
 });
 
-// Static
+// Static frontend + uploads
 app.use('/', express.static(path.join(__dirname, '../../frontend/public')));
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
-// API
+// APIs
 app.use('/api/auth', authRoutes);
-app.use('/api/cases', casesRoutes); // <-- mount new routes
+app.use('/api/cases', casesRoutes);
 app.use('/api', apiRoutes);
 
 const port = process.env.PORT || 4000;
