@@ -1,49 +1,111 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flexy Free Bootstrap Admin Template by WrapPixel</title>
+  <title>JusticeConnect – Register</title>
+
+  <!-- Local assets only (CSP-safe) -->
   <link rel="shortcut icon" type="image/png" href="./assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="./css/styles.min.css" />
   <link rel="stylesheet" href="css/login.css">
+  <!-- If your theme doesn't include Bootstrap already, also include your local vendor CSS: -->
+  <!-- <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"> -->
 </head>
 
 <body>
-  <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
-    <div
-      class="position-relative overflow-hidden text-bg-light min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
+       data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+
+    <div class="position-relative overflow-hidden text-bg-light min-vh-100 d-flex align-items-center justify-content-center">
       <div class="d-flex align-items-center justify-content-center w-100">
         <div class="row justify-content-center w-100">
           <div class="col-md-8 col-lg-6 col-xxl-3">
             <div class="card mb-0">
               <div class="card-body">
                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                  <img src="./assets/images/logos/logo.svg" alt="">
+                  <img src="./assets/images/logos/logo.svg" alt="JusticeConnect">
                 </a>
-                <p class="text-center">JusticeConnect</p>
-                <form>
+                <p class="text-center mb-4">Create your JusticeConnect account</p>
+
+                <!-- page-level message (rarely used now that we show per-field) -->
+                <div id="msg" class="alert d-none" role="alert"></div>
+
+                <form id="registerForm" novalidate>
+                  <!-- First name -->
                   <div class="mb-3">
-                    <label for="exampleInputtext1" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
+                    <label for="fname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="fname" required>
+                    <div class="invalid-feedback" id="fnameError"></div>
                   </div>
+
+                  <!-- Last name -->
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="lname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lname" required>
+                    <div class="invalid-feedback" id="lnameError"></div>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                    <div class="invalid-feedback" id="emailError"></div>
+                  </div>
+
+                  <!-- Phone -->
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" placeholder="+1 226-555-0123">
+                    <div class="invalid-feedback" id="phoneError"></div>
+                  </div>
+
+                  <!-- Role -->
+                  <div class="mb-3">
+                    <label for="role" class="form-label">Role</label>
+                    <select class="form-select" id="role" required>
+                      <option value="survivor">Survivor</option>
+                      <option value="lawyer">Lawyer</option>
+                      <option value="admin">Admin</option>
+                      <option value="donor">Donor</option>
+                    </select>
+                    <div class="invalid-feedback" id="roleError"></div>
+                  </div>
+
+                  <!-- Lawyer-only fields -->
+                  <div id="lawyerFields" class="mb-3 d-none">
+                    <label class="form-label">Expertise (comma separated)</label>
+                    <input id="expertise" type="text" class="form-control" placeholder="family, immigration">
+                    <div class="invalid-feedback" id="expertiseError"></div>
+
+                    <label class="form-label mt-2">License Number</label>
+                    <input id="licenseNumber" type="text" class="form-control" placeholder="e.g., LS123456">
+                    <div class="invalid-feedback" id="licenseNumberError"></div>
+                  </div>
+
+                  <!-- Passwords -->
+                  <div class="mb-3">
+                    <label for="newPassword" class="form-label">New Password</label>
+                    <input type="password" class="form-control" id="newPassword" required>
+                    <div class="form-text">Min 8 chars, include a number & a symbol.</div>
+                    <div class="invalid-feedback" id="newPasswordError"></div>
                   </div>
                   <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" required>
+                    <div class="invalid-feedback" id="confirmPasswordError"></div>
                   </div>
-                  <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign Up</a>
+
+                  <button id="btnRegister" type="button" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">
+                    Sign Up
+                  </button>
+
                   <div class="d-flex align-items-center justify-content-center">
-                    <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
+                    <p class="fs-6 mb-0">Already have an account?</p>
                     <a class="text-primary fw-bold ms-2" href="./index.html">Sign In</a>
                   </div>
                 </form>
+
               </div>
             </div>
           </div>
@@ -51,10 +113,11 @@
       </div>
     </div>
   </div>
-  <!-- <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
-  <!-- solar icons -->
-  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-</body>
 
+  <!-- Local JS (CSP-safe; keep this order) -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/register.js"></script>
+</body>
 </html>

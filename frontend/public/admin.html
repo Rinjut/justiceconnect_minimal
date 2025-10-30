@@ -49,7 +49,7 @@
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
             <li class="nav-small-cap">
-              <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">ADMIN HOME</span>
             </li>
 
@@ -93,8 +93,7 @@
               </a>
             </li>
 
-           
-            <!-- Lawyer Availability (new quick access link) -->
+            <!-- Lawyer Availability -->
             <li class="sidebar-item">
               <a class="sidebar-link" href="#lawyer-availability" aria-expanded="false">
                 <i class="ti ti-user-check"></i>
@@ -107,13 +106,13 @@
             </li>
 
             <li class="nav-small-cap">
-              <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">ACCOUNT</span>
             </li>
 
-           
+            <!-- Logout (sidebar) -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+              <a class="sidebar-link" id="btnLogout" href="#" aria-expanded="false">
                 <i class="ti ti-logout"></i>
                 <span class="hide-menu">Logout</span>
               </a>
@@ -132,23 +131,23 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
-              <a class="nav-link sidebartoggler " id="headerCollapse" href="javascript:void(0)">
+              <a class="nav-link sidebartoggler" id="headerCollapse" href="#">
                 <i class="ti ti-menu-2"></i>
               </a>
             </li>
 
             <!-- notifications -->
             <li class="nav-item dropdown">
-              <a class="nav-link " href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link" href="#" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="ti ti-bell"></i>
                 <div class="notification bg-primary rounded-circle"></div>
               </a>
               <div class="dropdown-menu dropdown-menu-animate-up" aria-labelledby="drop1">
                 <div class="message-body">
-                  <a href="javascript:void(0)" class="dropdown-item">
+                  <a href="#" class="dropdown-item">
                     New high-priority request submitted
                   </a>
-                  <a href="javascript:void(0)" class="dropdown-item">
+                  <a href="#" class="dropdown-item">
                     Lawyer A. Patel marked available
                   </a>
                 </div>
@@ -161,8 +160,7 @@
 
               <!-- profile menu -->
               <li class="nav-item dropdown">
-                <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
+                <a class="nav-link" href="#" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="./profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
@@ -170,15 +168,15 @@
                     <div class="px-3 pb-2 small text-muted">Signed in as</div>
                     <div class="px-3 pb-2 fw-semibold">System Admin</div>
 
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="#" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">My Profile</p>
                     </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="#" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-lock fs-6"></i>
                       <p class="mb-0 fs-3">Access Control</p>
                     </a>
-                    <a href="./index.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                    <a href="#" id="btnLogoutTop" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
               </li>
@@ -200,9 +198,7 @@
                   <div class="d-md-flex align-items-center">
                     <div>
                       <h4 class="card-title">Case Overview</h4>
-                      <p class="card-subtitle">
-                        Incoming requests vs Assigned vs Active work
-                      </p>
+                      <p class="card-subtitle">Incoming requests vs Assigned vs Active work</p>
                     </div>
                     <div class="ms-auto">
                       <ul class="list-unstyled mb-0">
@@ -218,7 +214,7 @@
                     </div>
                   </div>
 
-                  <!-- chart -->
+                  <!-- chart placeholder -->
                   <div id="sales-overview" class="mt-4 mx-n6"></div>
                 </div>
               </div>
@@ -235,17 +231,12 @@
                     </div>
                     <div class="ms-auto">
                       <div class="dropdown">
-                        <a href="javascript:void(0)" class="text-muted" id="year1-dropdown" data-bs-toggle="dropdown"
-                          aria-expanded="false">
+                        <a href="#" class="text-muted" id="year1-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                           <i class="ti ti-dots fs-7"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="year1-dropdown">
-                          <li>
-                            <a class="dropdown-item" href="javascript:void(0)">View Logs</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="javascript:void(0)">Download Report</a>
-                          </li>
+                          <li><a class="dropdown-item" href="#">View Logs</a></li>
+                          <li><a class="dropdown-item" href="#">Download Report</a></li>
                         </ul>
                       </div>
                     </div>
@@ -260,9 +251,7 @@
                       <h5 class="mb-0 fw-bolder fs-4">High Priority Cases</h5>
                       <span class="text-muted fs-3">Needing assignment now</span>
                     </div>
-                    <div class="ms-auto">
-                      <span class="badge bg-secondary-subtle text-muted">4</span>
-                    </div>
+                    <div class="ms-auto"><span class="badge bg-secondary-subtle text-muted">4</span></div>
                   </div>
 
                   <!-- item 2 -->
@@ -274,9 +263,7 @@
                       <h5 class="mb-0 fw-bolder fs-4">Lawyers Available</h5>
                       <span class="text-muted fs-3">Marked "accepting cases"</span>
                     </div>
-                    <div class="ms-auto">
-                      <span class="badge bg-secondary-subtle text-muted">12</span>
-                    </div>
+                    <div class="ms-auto"><span class="badge bg-secondary-subtle text-muted">12</span></div>
                   </div>
 
                   <!-- item 3 -->
@@ -288,9 +275,7 @@
                       <h5 class="mb-0 fw-bolder fs-4">Survivors Supported</h5>
                       <span class="text-muted fs-3">This week</span>
                     </div>
-                    <div class="ms-auto">
-                      <span class="badge bg-secondary-subtle text-muted">27</span>
-                    </div>
+                    <div class="ms-auto"><span class="badge bg-secondary-subtle text-muted">27</span></div>
                   </div>
 
                   <!-- item 4 -->
@@ -302,9 +287,7 @@
                       <h5 class="mb-0 fw-bolder fs-4">Access / Security</h5>
                       <span class="text-muted fs-3">No policy violations</span>
                     </div>
-                    <div class="ms-auto">
-                      <span class="badge bg-secondary-subtle text-muted">OK</span>
-                    </div>
+                    <div class="ms-auto"><span class="badge bg-secondary-subtle text-muted">OK</span></div>
                   </div>
 
                 </div>
@@ -318,9 +301,7 @@
                   <div class="d-md-flex align-items-center">
                     <div>
                       <h4 class="card-title">Assignment Queue</h4>
-                      <p class="card-subtitle">
-                        Survivors waiting to be matched with a qualified lawyer
-                      </p>
+                      <p class="card-subtitle">Survivors waiting to be matched with a qualified lawyer</p>
                     </div>
                     <div class="ms-auto mt-3 mt-md-0">
                       <select class="form-select theme-select border-0" aria-label="Select timeframe">
@@ -353,12 +334,8 @@
                             </div>
                           </td>
                           <td class="px-0">JC-2025-016</td>
-                          <td class="px-0">
-                            <span class="badge bg-danger">High</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Needs assignment
-                          </td>
+                          <td class="px-0"><span class="badge bg-danger">High</span></td>
+                          <td class="px-0 text-dark fw-medium text-end">Needs assignment</td>
                         </tr>
 
                         <tr>
@@ -372,12 +349,8 @@
                             </div>
                           </td>
                           <td class="px-0">JC-2025-017</td>
-                          <td class="px-0">
-                            <span class="badge text-bg-primary">Medium</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Reviewing intake
-                          </td>
+                          <td class="px-0"><span class="badge text-bg-primary">Medium</span></td>
+                          <td class="px-0 text-dark fw-medium text-end">Reviewing intake</td>
                         </tr>
 
                         <tr>
@@ -391,12 +364,8 @@
                             </div>
                           </td>
                           <td class="px-0">JC-2025-018</td>
-                          <td class="px-0">
-                            <span class="badge bg-warning">High</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Assigned to review
-                          </td>
+                          <td class="px-0"><span class="badge bg-warning">High</span></td>
+                          <td class="px-0 text-dark fw-medium text-end">Assigned to review</td>
                         </tr>
 
                         <tr>
@@ -410,12 +379,8 @@
                             </div>
                           </td>
                           <td class="px-0">JC-2025-019</td>
-                          <td class="px-0">
-                            <span class="badge bg-success">Low</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Waiting lawyer accept
-                          </td>
+                          <td class="px-0"><span class="badge bg-success">Low</span></td>
+                          <td class="px-0 text-dark fw-medium text-end">Waiting lawyer accept</td>
                         </tr>
 
                         <tr>
@@ -429,12 +394,8 @@
                             </div>
                           </td>
                           <td class="px-0">JC-2025-020</td>
-                          <td class="px-0">
-                            <span class="badge bg-success">Low</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Assigned to Patel
-                          </td>
+                          <td class="px-0"><span class="badge bg-success">Low</span></td>
+                          <td class="px-0 text-dark fw-medium text-end">Assigned to Patel</td>
                         </tr>
 
                       </tbody>
@@ -455,7 +416,7 @@
                       <p class="text-muted mb-4 fs-3">Who can take new cases today</p>
                     </div>
                     <div class="ms-auto">
-                      <a href="javascript:void(0)" class="btn btn-sm btn-outline-primary d-flex align-items-center gap-2">
+                      <a href="#" class="btn btn-sm btn-outline-primary d-flex align-items-center gap-2">
                         <i class="ti ti-user-check fs-5"></i>
                         <span>View Full Availability</span>
                       </a>
@@ -533,26 +494,11 @@
 
                   <table class="table table-borderless">
                     <tbody>
-                      <tr>
-                        <td>Cases Closed</td>
-                        <td class="fw-medium text-end">8</td>
-                      </tr>
-                      <tr>
-                        <td>Active Cases</td>
-                        <td class="fw-medium text-end">22</td>
-                      </tr>
-                      <tr>
-                        <td>High Risk (Safety)</td>
-                        <td class="fw-medium text-end text-danger">4</td>
-                      </tr>
-                      <tr>
-                        <td>Avg. Time to Assign</td>
-                        <td class="fw-medium text-end">3.2 hrs</td>
-                      </tr>
-                      <tr>
-                        <td>Lawyers Engaged</td>
-                        <td class="fw-medium text-end">15</td>
-                      </tr>
+                      <tr><td>Cases Closed</td> <td class="fw-medium text-end">8</td></tr>
+                      <tr><td>Active Cases</td>  <td class="fw-medium text-end">22</td></tr>
+                      <tr><td>High Risk (Safety)</td> <td class="fw-medium text-end text-danger">4</td></tr>
+                      <tr><td>Avg. Time to Assign</td> <td class="fw-medium text-end">3.2 hrs</td></tr>
+                      <tr><td>Lawyers Engaged</td> <td class="fw-medium text-end">15</td></tr>
                     </tbody>
                   </table>
 
@@ -584,23 +530,17 @@
           </div>
 
           <div class="py-6 px-6 text-center">
-            <p class="mb-0 fs-4">
-              JusticeConnect • Secure Legal Aid Platform
-            </p>
+            <p class="mb-0 fs-4">JusticeConnect • Secure Legal Aid Platform</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- scripts -->
-  <!-- <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./js/sidebarmenu.js"></script>
-  <script src="./js/app.min.js"></script>
-  <script src="./apexcharts/dist/apexcharts.min.js"></script>
-  <script src="./assets/libs/simplebar/dist/simplebar.js"></script>
-  <script src="./js/dashboard.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script> -->
+  <!-- scripts (LOCAL ONLY; no inline, CSP-safe) -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
 </body>
 </html>

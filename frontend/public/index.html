@@ -1,51 +1,67 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flexy Free Bootstrap Admin Template by WrapPixel</title>
+  <title>JusticeConnect – Sign In</title>
+
+  <!-- Local assets only -->
   <link rel="shortcut icon" type="image/png" href="./assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="./css/styles.min.css" />
   <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
-  testttttt
-  <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
-    <div
-      class="position-relative overflow-hidden text-bg-light min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6"
+       data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+
+    <div class="position-relative overflow-hidden text-bg-light min-vh-100 d-flex align-items-center justify-content-center">
       <div class="d-flex align-items-center justify-content-center w-100">
         <div class="row justify-content-center w-100">
           <div class="col-md-8 col-lg-6 col-xxl-3">
             <div class="card mb-0">
               <div class="card-body">
                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                  <img src="./assets/images/logos/logo.svg" alt="">
+                  <img src="./assets/images/logos/logo.svg" alt="JusticeConnect">
                 </a>
-                <p class="text-center">JusticeConnect</p>
-                <form>
+                <p class="text-center mb-3">JusticeConnect</p>
+
+                <!-- flash banner (e.g., from register redirect) -->
+                <div id="flash" class="alert alert-success d-none" role="alert"></div>
+
+                <!-- page error banner (fallback) -->
+                <div id="msg" class="alert alert-danger d-none" role="alert"></div>
+
+                <form id="loginForm" novalidate>
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" class="form-control" id="email" required>
+                    <div class="invalid-feedback" id="emailError"></div>
                   </div>
+
                   <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" required>
+                    <div class="invalid-feedback" id="passwordError"></div>
                   </div>
+
                   <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="form-check">
-                      <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
+                      <input class="form-check-input primary" type="checkbox" value="" id="rememberMe">
+                      <label class="form-check-label" for="rememberMe">Remember me</label>
                     </div>
-                    <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
+                    <a class="text-primary fw-bold" href="./forgot.html">Forgot Password?</a>
                   </div>
-                  <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</a>
+
+                  <button id="btnLogin" type="button"
+                          class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</button>
+
                   <div class="d-flex align-items-center justify-content-center">
+                    <span class="fs-6 mb-0">Don’t have an account?</span>
                     <a class="text-primary fw-bold ms-2" href="./register.html">Create an account</a>
                   </div>
                 </form>
+
               </div>
             </div>
           </div>
@@ -53,10 +69,11 @@
       </div>
     </div>
   </div>
-  <!-- <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
-  <!-- solar icons -->
-  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
-</body>
 
+  <!-- Local JS only; keep order -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/login.js"></script>
+</body>
 </html>
