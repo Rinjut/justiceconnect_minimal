@@ -161,28 +161,50 @@
           <div class="row">
             <!-- LEFT MAIN CARD: My Case Status -->
             <div class="col-lg-8">
-              <div class="card w-100">
-                <div class="card-body">
-                  <div class="d-md-flex align-items-center">
-                    <div>
-                      <h4 class="card-title">My Case Status</h4>
-                      <p class="card-subtitle">Track progress from request to resolution</p>
-                    </div>
-                    <div class="ms-auto">
-                      <ul class="list-unstyled mb-0">
-                        <li class="list-inline-item text-primary">
-                          <span class="round-8 text-bg-primary rounded-circle me-1 d-inline-block"></span>Submitted
-                        </li>
-                        <li class="list-inline-item text-info">
-                          <span class="round-8 text-bg-info rounded-circle me-1 d-inline-block"></span>In Progress
-                        </li>
-                      </ul>
-                    </div>
+                            <!-- ===================== Case Summary Table ===================== -->
+              <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-light d-flex align-items-center justify-content-between">
+                  <h5 class="mb-0 fw-semibold text-dark">My Case Summary</h5>
+                  <span class="badge bg-primary-subtle text-primary">Confidential</span>
+                </div>
+
+                <div class="card-body p-0">
+                  <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0 text-nowrap">
+                      <thead class="table-light border-bottom">
+                        <tr class="text-uppercase small text-muted">
+                          <th style="width:10%">Case ID</th>
+                          <th style="width:10%">Status</th>
+                          <th style="width:18%">Assigned Lawyer</th>
+                          <th style="width:18%">Next Step</th>
+                          <th style="width:32%">Description</th>
+                          <th style="width:12%">Last Updated</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td id="cd-caseId" class="fw-semibold text-dark">JC-2025-017</td>
+                          <td id="cd-status">
+                            <span class="badge bg-warning text-dark">In Review</span>
+                          </td>
+                          <td id="cd-lawyer" class="text-dark">A. Patel (Family Law)</td>
+                          <td id="cd-next" class="text-dark">Follow-up call Apr 15, 2 PM</td>
+                          <td id="cd-desc" class="small text-muted">
+                            Survivor requested urgent legal protection and housing assistance.
+                          </td>
+                          <td id="cd-updated" class="text-dark">Apr 14 2025</td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <div id="sales-overview" class="mt-4 mx-n6"></div>
-                  <div class="mt-4 small text-muted">Last update: April 14, 2025 • Case ID: JC-2025-017</div>
+                </div>
+
+                <div class="card-footer bg-light small text-muted">
+                  <i class="ti ti-shield-lock me-1"></i> Your case information is secure and visible only to your assigned legal team.
                 </div>
               </div>
+              <!-- ===================== /Case Summary Table ===================== -->
+
             </div>
 
             <!-- RIGHT SIDE CARD: My Support Info -->
