@@ -2,25 +2,30 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JusticeConnect | Survivor Dashboard</title>
   <link rel="shortcut icon" type="image/png" href="./assets/images/logos/favicon.png" />
+  <!-- Your theme bundle (assumes Bootstrap utilities/components inside) -->
   <link rel="stylesheet" href="./css/styles.min.css" />
-  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/login.css" />
+  <style>
+    /* tiny helpers only for previews */
+    .required-asterisk::after { content: " *"; color: #dc3545; }
+    .round-48 { width: 48px; height: 48px; }
+    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px,1px,1px,1px); white-space: nowrap; }
+  </style>
 </head>
 
 <body>
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
-
-    <!--  App Topstrip -->
+    <!--  Topstrip -->
     <div class="app-topstrip bg-dark py-6 px-3 w-100 d-lg-flex align-items-center justify-content-between">
       <div class="d-flex align-items-center justify-content-center gap-3 mb-2 mb-lg-0">
         <a class="d-flex justify-content-center align-items-center text-white text-decoration-none" href="#">
-          <!-- keep logo asset but visually rename -->
-          <img src="assets/images/logos/logo-wrappixel.svg" alt="" width="48" style="filter:brightness(0) invert(1);">
+          <img src="assets/images/logos/logo-wrappixel.svg" alt="" width="48" style="filter:brightness(0) invert(1);" />
           <div class="ms-2">
             <div class="fw-bold text-white" style="line-height:1;">JusticeConnect</div>
             <div class="text-white-50 small">Support & Legal Aid</div>
@@ -33,7 +38,7 @@
       </div>
     </div>
 
-    <!-- Sidebar Start -->
+    <!-- Sidebar -->
     <aside class="left-sidebar">
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -46,56 +51,48 @@
           </div>
         </div>
 
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar>
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
               <span class="hide-menu">MENU</span>
             </li>
 
-            <!-- Dashboard -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./survivor.html" aria-expanded="false">
+              <a class="sidebar-link" href="#dashboard" aria-expanded="false">
                 <i class="ti ti-home-2"></i>
                 <span class="hide-menu">Dashboard</span>
               </a>
             </li>
 
-            <!-- My Case -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link" href="#my-case" aria-expanded="false">
                 <i class="ti ti-clipboard-check"></i>
                 <span class="hide-menu">My Case</span>
               </a>
             </li>
 
-            <!-- Submit New Request -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link" href="#new-case" aria-expanded="false">
                 <i class="ti ti-file-plus"></i>
                 <span class="hide-menu">Submit New Request</span>
               </a>
             </li>
 
-            <!-- Profile -->
             <li class="sidebar-item">
-              <a class="sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link" href="#profile" aria-expanded="false">
                 <i class="ti ti-user"></i>
                 <span class="hide-menu">Profile</span>
               </a>
             </li>
 
-            <li>
-              <span class="sidebar-divider lg"></span>
-            </li>
+            <li><span class="sidebar-divider lg"></span></li>
 
             <li class="nav-small-cap">
               <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-4"></iconify-icon>
               <span class="hide-menu">ACCOUNT</span>
             </li>
 
-            <!-- Logout -->
             <li class="sidebar-item">
               <a class="sidebar-link" href="./index.html" aria-expanded="false">
                 <i class="ti ti-logout"></i>
@@ -104,37 +101,30 @@
             </li>
           </ul>
         </nav>
-        <!-- End Sidebar navigation -->
       </div>
     </aside>
     <!--  Sidebar End -->
 
     <!--  Main wrapper -->
-    <div class="body-wrapper">
-      <!--  Header Start -->
+    <div class="body-wrapper" id="dashboard">
+      <!--  Header -->
       <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
           <ul class="navbar-nav">
             <li class="nav-item d-block d-xl-none">
-              <a class="nav-link sidebartoggler " id="headerCollapse" href="javascript:void(0)">
+              <a class="nav-link sidebartoggler" id="headerCollapse" href="javascript:void(0)">
                 <i class="ti ti-menu-2"></i>
               </a>
             </li>
-
-            <!-- notifications -->
             <li class="nav-item dropdown">
-              <a class="nav-link " href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link" href="javascript:void(0)" id="drop1" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="ti ti-bell"></i>
                 <div class="notification bg-primary rounded-circle"></div>
               </a>
               <div class="dropdown-menu dropdown-menu-animate-up" aria-labelledby="drop1">
                 <div class="message-body">
-                  <a href="javascript:void(0)" class="dropdown-item">
-                    Your case status was updated
-                  </a>
-                  <a href="javascript:void(0)" class="dropdown-item">
-                    A lawyer has been assigned
-                  </a>
+                  <a href="javascript:void(0)" class="dropdown-item">Your case status was updated</a>
+                  <a href="javascript:void(0)" class="dropdown-item">A lawyer has been assigned</a>
                 </div>
               </div>
             </li>
@@ -142,31 +132,24 @@
 
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-
-              <!-- profile menu -->
               <li class="nav-item dropdown">
-                <a class="nav-link " href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  <img src="./profile/user-3.jpg" alt="" width="35" height="35" class="rounded-circle">
+                <a class="nav-link" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="./profile/user-3.jpg" alt="" width="35" height="35" class="rounded-circle" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
                     <div class="px-3 pb-2 small text-muted">Logged in as</div>
                     <div class="px-3 pb-2 fw-semibold">You</div>
-
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">Profile & Contact</p>
+                    <a href="#profile" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-user fs-6"></i><p class="mb-0 fs-3">Profile & Contact</p>
                     </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-shield-lock fs-6"></i>
-                      <p class="mb-0 fs-3">Privacy & Safety</p>
+                    <a href="#privacy" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-shield-lock fs-6"></i><p class="mb-0 fs-3">Privacy & Safety</p>
                     </a>
                     <a href="./index.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
               </li>
-
             </ul>
           </div>
         </nav>
@@ -175,9 +158,7 @@
 
       <div class="body-wrapper-inner">
         <div class="container-fluid">
-          <!--  Row 1 -->
           <div class="row">
-
             <!-- LEFT MAIN CARD: My Case Status -->
             <div class="col-lg-8">
               <div class="card w-100">
@@ -185,30 +166,21 @@
                   <div class="d-md-flex align-items-center">
                     <div>
                       <h4 class="card-title">My Case Status</h4>
-                      <p class="card-subtitle">
-                        Track progress from request to resolution
-                      </p>
+                      <p class="card-subtitle">Track progress from request to resolution</p>
                     </div>
                     <div class="ms-auto">
                       <ul class="list-unstyled mb-0">
                         <li class="list-inline-item text-primary">
-                          <span class="round-8 text-bg-primary rounded-circle me-1 d-inline-block"></span>
-                          Submitted
+                          <span class="round-8 text-bg-primary rounded-circle me-1 d-inline-block"></span>Submitted
                         </li>
                         <li class="list-inline-item text-info">
-                          <span class="round-8 text-bg-info rounded-circle me-1 d-inline-block"></span>
-                          In Progress
+                          <span class="round-8 text-bg-info rounded-circle me-1 d-inline-block"></span>In Progress
                         </li>
                       </ul>
                     </div>
                   </div>
-
-                  <!-- The chart can still reuse #sales-overview -->
                   <div id="sales-overview" class="mt-4 mx-n6"></div>
-
-                  <div class="mt-4 small text-muted">
-                    Last update: April 14, 2025 • Case ID: JC-2025-017
-                  </div>
+                  <div class="mt-4 small text-muted">Last update: April 14, 2025 • Case ID: JC-2025-017</div>
                 </div>
               </div>
             </div>
@@ -224,23 +196,17 @@
                     </div>
                     <div class="ms-auto">
                       <div class="dropdown">
-                        <a href="javascript:void(0)" class="text-muted" id="year1-dropdown" data-bs-toggle="dropdown"
-                          aria-expanded="false">
+                        <a href="javascript:void(0)" class="text-muted" id="year1-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
                           <i class="ti ti-dots fs-7"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="year1-dropdown">
-                          <li>
-                            <a class="dropdown-item" href="javascript:void(0)">View full case</a>
-                          </li>
-                          <li>
-                            <a class="dropdown-item" href="javascript:void(0)">Request update</a>
-                          </li>
+                          <li><a class="dropdown-item" href="#my-case">View full case</a></li>
+                          <li><a class="dropdown-item" href="#new-case">Request update</a></li>
                         </ul>
                       </div>
                     </div>
                   </div>
 
-                  <!-- Assigned lawyer -->
                   <div class="mt-4 pb-3 d-flex align-items-center">
                     <span class="btn btn-primary rounded-circle round-48 hstack justify-content-center">
                       <i class="ti ti-user-check fs-6"></i>
@@ -249,12 +215,9 @@
                       <h5 class="mb-0 fw-bolder fs-4">Assigned Lawyer</h5>
                       <span class="text-muted fs-3">A. Patel (Family Law)</span>
                     </div>
-                    <div class="ms-auto">
-                      <span class="badge bg-secondary-subtle text-muted">Active</span>
-                    </div>
+                    <div class="ms-auto"><span class="badge bg-secondary-subtle text-muted">Active</span></div>
                   </div>
 
-                  <!-- Priority -->
                   <div class="py-3 d-flex align-items-center">
                     <span class="btn btn-warning rounded-circle round-48 hstack justify-content-center">
                       <i class="ti ti-alert-triangle fs-6"></i>
@@ -263,12 +226,9 @@
                       <h5 class="mb-0 fw-bolder fs-4">Priority Level</h5>
                       <span class="text-muted fs-3">High (Safety)</span>
                     </div>
-                    <div class="ms-auto">
-                      <span class="badge bg-secondary-subtle text-muted">24/7</span>
-                    </div>
+                    <div class="ms-auto"><span class="badge bg-secondary-subtle text-muted">24/7</span></div>
                   </div>
 
-                  <!-- Next step -->
                   <div class="py-3 d-flex align-items-center">
                     <span class="btn btn-success rounded-circle round-48 hstack justify-content-center">
                       <i class="ti ti-calendar-check fs-6"></i>
@@ -277,12 +237,9 @@
                       <h5 class="mb-0 fw-bolder fs-4">Next Step</h5>
                       <span class="text-muted fs-3">Call scheduled: Apr 15, 2pm</span>
                     </div>
-                    <div class="ms-auto">
-                      <span class="badge bg-secondary-subtle text-muted">Tomorrow</span>
-                    </div>
+                    <div class="ms-auto"><span class="badge bg-secondary-subtle text-muted">Tomorrow</span></div>
                   </div>
 
-                  <!-- Safety -->
                   <div class="pt-3 mb-7 d-flex align-items-center">
                     <span class="btn btn-secondary rounded-circle round-48 hstack justify-content-center">
                       <i class="ti ti-shield-lock fs-6"></i>
@@ -297,171 +254,205 @@
               </div>
             </div>
 
-            <!-- TABLE: My Case Details -->
-            <div class="col-12">
+            <!-- ===== NEW CASE REQUEST (with upload) ===== -->
+            <div class="col-12" id="new-case">
               <div class="card">
                 <div class="card-body">
                   <div class="d-md-flex align-items-center">
                     <div>
-                      <h4 class="card-title">My Case Details</h4>
-                      <p class="card-subtitle">
-                        Summary of your current request
-                      </p>
-                    </div>
-                    <div class="ms-auto mt-3 mt-md-0">
-                      <select class="form-select theme-select border-0" aria-label="Select case">
-                        <option value="1" selected>Case JC-2025-017</option>
-                        <option value="2">Past Case JC-2024-442</option>
-                      </select>
+                      <h4 class="card-title mb-1">New Case Request</h4>
+                      <p class="card-subtitle">Tell us what you need help with. Fields with * are required.</p>
                     </div>
                   </div>
 
-                  <div class="table-responsive mt-4">
-                    <table class="table mb-0 text-nowrap varient-table align-middle fs-3">
-                      <thead>
-                        <tr>
-                          <th scope="col" class="px-0 text-muted">Topic</th>
-                          <th scope="col" class="px-0 text-muted">Assigned To</th>
-                          <th scope="col" class="px-0 text-muted">Status</th>
-                          <th scope="col" class="px-0 text-muted text-end">Last Update</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <div class="rounded-circle bg-primary-subtle text-primary hstack justify-content-center round-48 fs-4">
-                                <i class="ti ti-home-heart"></i>
-                              </div>
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">Safety / Protection</h6>
-                                <span class="text-muted">Emergency support request</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">
-                            A. Patel
-                          </td>
-                          <td class="px-0">
-                            <span class="badge bg-warning">In Review</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Apr 14, 2025
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <div class="rounded-circle bg-success-subtle text-success hstack justify-content-center round-48 fs-4">
-                                <i class="ti ti-file-description"></i>
-                              </div>
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">Paperwork / Forms</h6>
-                                <span class="text-muted">Preparing documentation</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">
-                            A. Patel
-                          </td>
-                          <td class="px-0">
-                            <span class="badge bg-success">In Progress</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Apr 14, 2025
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <div class="rounded-circle bg-secondary-subtle text-secondary hstack justify-content-center round-48 fs-4">
-                                <i class="ti ti-headset"></i>
-                              </div>
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">Follow-up Call</h6>
-                                <span class="text-muted">Scheduled check-in</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">
-                            You + A. Patel
-                          </td>
-                          <td class="px-0">
-                            <span class="badge text-bg-primary">Scheduled</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Apr 15, 2025 @ 2pm
-                          </td>
-                        </tr>
-
-                      </tbody>
-                    </table>
+                  <!-- success / error -->
+                  <div id="caseRequestSuccess" class="alert alert-success d-none mt-3" role="alert">
+                    ✅ Request received. We’ll review and follow up shortly.
                   </div>
+                  <div id="caseRequestError" class="alert alert-danger d-none mt-3" role="alert">
+                    ⚠️ There was an issue submitting your request. Please try again.
+                  </div>
+
+                  <form id="caseRequestForm" class="needs-validation mt-4" novalidate>
+                    <!-- Contact (safe) -->
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label for="preferredName" class="form-label required-asterisk">Preferred name</label>
+                        <input type="text" class="form-control" id="preferredName" name="preferredName" required />
+                        <div class="invalid-feedback">Please enter a preferred name.</div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="contactMethod" class="form-label required-asterisk">Preferred contact method</label>
+                        <select class="form-select" id="contactMethod" name="contactMethod" required>
+                          <option value="" selected disabled>Choose…</option>
+                          <option value="email">Email</option>
+                          <option value="phone">Phone</option>
+                          <option value="sms">SMS/Text</option>
+                          <option value="in-app">In-app only</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a contact method.</div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="contactValue" class="form-label">Contact (email or phone)</label>
+                        <input type="text" class="form-control" id="contactValue" name="contactValue" placeholder="Optional" />
+                      </div>
+                      <div class="col-md-6 form-check mt-4 ms-2">
+                        <input class="form-check-input" type="checkbox" id="safeToContact" name="safeToContact" checked />
+                        <label class="form-check-label" for="safeToContact">It’s safe to contact me at this info</label>
+                      </div>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <!-- Location -->
+                    <div class="row g-3">
+                      <div class="col-md-4">
+                        <label for="province" class="form-label required-asterisk">Province/Territory</label>
+                        <select class="form-select" id="province" name="province" required>
+                          <option value="" selected disabled>Choose…</option>
+                          <option>Ontario</option><option>Alberta</option><option>British Columbia</option>
+                          <option>Manitoba</option><option>New Brunswick</option><option>Newfoundland and Labrador</option>
+                          <option>Nova Scotia</option><option>Prince Edward Island</option><option>Quebec</option>
+                          <option>Saskatchewan</option><option>Northwest Territories</option><option>Nunavut</option><option>Yukon</option>
+                        </select>
+                        <div class="invalid-feedback">Please choose your province/territory.</div>
+                      </div>
+                      <div class="col-md-4">
+                        <label for="city" class="form-label">City/Town</label>
+                        <input type="text" class="form-control" id="city" name="city" placeholder="Optional" />
+                      </div>
+                      <div class="col-md-4">
+                        <label for="language" class="form-label">Preferred language</label>
+                        <select id="language" name="language" class="form-select">
+                          <option value="" selected>English</option>
+                          <option>French</option><option>Arabic</option><option>Hindi</option><option>Mandarin</option>
+                          <option>Punjabi</option><option>Spanish</option><option>Urdu</option><option>Other</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <!-- Issue -->
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label for="issueCategory" class="form-label required-asterisk">Issue category</label>
+                        <select class="form-select" id="issueCategory" name="issueCategory" required>
+                          <option value="" selected disabled>Choose…</option>
+                          <option>Family Safety / Protection</option>
+                          <option>Family Law</option>
+                          <option>Housing</option>
+                          <option>Employment</option>
+                          <option>Benefits / Income</option>
+                          <option>Immigration</option>
+                          <option>Civil</option>
+                          <option>Other</option>
+                        </select>
+                        <div class="invalid-feedback">Please select an issue category.</div>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="desiredOutcome" class="form-label">What outcome would help?</label>
+                        <input type="text" class="form-control" id="desiredOutcome" name="desiredOutcome" placeholder="e.g., protection order, urgent advice" />
+                      </div>
+                      <div class="col-12">
+                        <label for="situation" class="form-label required-asterisk">Briefly describe your situation</label>
+                        <textarea id="situation" name="situation" class="form-control" rows="4" required
+                          placeholder="Share only what you’re comfortable with. Avoid names/addresses if unsafe."></textarea>
+                        <div class="invalid-feedback">A brief description helps us route your request.</div>
+                      </div>
+                    </div>
+
+                    <!-- Urgency -->
+                    <div class="mt-4">
+                      <span class="form-label d-block required-asterisk">How urgent is this?</span>
+                      <div class="d-flex gap-3 flex-wrap mt-2">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="urgency" id="urgLow" value="Low" required />
+                          <label class="form-check-label" for="urgLow">Low</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="urgency" id="urgMed" value="Medium" />
+                          <label class="form-check-label" for="urgMed">Medium</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="urgency" id="urgHigh" value="High" />
+                          <label class="form-check-label" for="urgHigh">High (safety)</label>
+                        </div>
+                      </div>
+                      <div id="urgencyError" class="invalid-feedback d-block" style="display:none;">Please choose an urgency.</div>
+                    </div>
+
+                    <!-- Safety note -->
+                    <div class="form-check mt-3">
+                      <input class="form-check-input" type="checkbox" id="safetyConcern" name="safetyConcern" />
+                      <label class="form-check-label" for="safetyConcern">I have immediate safety concerns</label>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <!-- Preferences -->
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <label for="contactTimes" class="form-label">Best time to contact you</label>
+                        <select id="contactTimes" name="contactTimes" class="form-select">
+                          <option value="" selected>Anytime</option>
+                          <option>Mornings</option><option>Afternoons</option><option>Evenings</option>
+                          <option>Weekends</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="accessNeeds" class="form-label">Accessibility or support needs</label>
+                        <input type="text" id="accessNeeds" name="accessNeeds" class="form-control" placeholder="Interpreter, assistive tech, etc." />
+                      </div>
+                      <div class="col-12">
+                        <label for="confidentialNotes" class="form-label">Confidential notes for staff (optional)</label>
+                        <textarea id="confidentialNotes" name="confidentialNotes" class="form-control" rows="3" placeholder="Share only what’s safe to share."></textarea>
+                      </div>
+                    </div>
+
+                    <!-- Attachments (optional) -->
+                    <div class="mt-4">
+                      <label for="attachments" class="form-label">Supporting documents (optional)</label>
+                      <input
+                        class="form-control"
+                        type="file"
+                        id="attachments"
+                        name="attachments"
+                        multiple
+                        accept=".pdf,.jpg,.jpeg,.png,.gif,.webp,.heic,.txt,.rtf,.doc,.docx"
+                        aria-describedby="attachmentsHelp"
+                      />
+                      <div id="attachmentsHelp" class="form-text">
+                        Up to 5 files, 10&nbsp;MB each (max 25&nbsp;MB total). Remove personal identifiers if safety is a concern.
+                      </div>
+                      <ul id="fileList" class="small text-muted mt-2 mb-0"></ul>
+                      <div id="fileError" class="invalid-feedback d-block" style="display:none;"></div>
+                    </div>
+
+                    <hr class="my-4" />
+
+                    <div class="d-flex align-items-center gap-2">
+                      <button type="submit" class="btn btn-primary">
+                        <i class="ti ti-send me-1"></i> Submit Request
+                      </button>
+                      <button type="reset" class="btn btn-light">Clear</button>
+                      <span class="text-muted small ms-2">We’ll confirm and follow up by your chosen method.</span>
+                    </div>
+
+                  </form>
                 </div>
               </div>
             </div>
+            <!-- ===== End New Case Request ===== -->
 
-            <!-- LOWER ROW CARDS -->
+            <!-- Safety & Resources -->
             <div class="col-lg-6">
-              <!-- Card: My Legal Support -->
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title mb-0">My Legal Support</h4>
-                  <p class="text-muted mb-4 fs-3">
-                    Your current lawyer and contact notes
-                  </p>
-
-                  <div class="mb-3 d-flex align-items-start border-bottom pb-3">
-                    <img src="./profile/user-1.jpg" class="rounded-circle" width="48" height="48" alt="lawyer" />
-                    <div class="ms-3 flex-grow-1">
-                      <div class="fw-semibold">A. Patel</div>
-                      <div class="text-muted small">Family Law • Licensed (ON)</div>
-                      <div class="badge bg-success-subtle text-success mt-2">Active on your case</div>
-                    </div>
-                    <div class="text-end small text-muted">
-                      Next call:<br> Apr 15, 2pm
-                    </div>
-                  </div>
-
-                  <div class="mb-3 d-flex align-items-start border-bottom pb-3">
-                    <div class="rounded-circle bg-warning-subtle text-warning hstack justify-content-center round-48 fs-4">
-                      <i class="ti ti-mail-forward"></i>
-                    </div>
-                    <div class="ms-3 flex-grow-1">
-                      <div class="fw-semibold">Need to send documents?</div>
-                      <div class="text-muted small">We’ll explain what’s needed and why.</div>
-                      <div class="badge bg-warning-subtle text-warning mt-2">No rush • we can help</div>
-                    </div>
-                    <div class="text-end small text-muted">
-                      Upload link<br>coming soon
-                    </div>
-                  </div>
-
-                  <div class="d-flex align-items-start">
-                    <div class="rounded-circle bg-secondary-subtle text-secondary hstack justify-content-center round-48 fs-4">
-                      <i class="ti ti-shield-lock"></i>
-                    </div>
-                    <div class="ms-3 flex-grow-1">
-                      <div class="fw-semibold">Your privacy matters</div>
-                      <div class="text-muted small">Only your assigned support team can view details.</div>
-                      <div class="badge bg-secondary-subtle text-secondary mt-2">Confidential</div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <!-- Card: Safety & Resources -->
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex align-items-center">
                     <h4 class="card-title mb-0">Safety & Resources</h4>
                     <select class="form-select w-auto ms-auto">
-                      <option selected="">Quick Help</option>
+                      <option selected>Quick Help</option>
                       <option value="1">Legal Info</option>
                       <option value="2">Emergency</option>
                     </select>
@@ -479,49 +470,64 @@
 
                   <table class="table table-borderless">
                     <tbody>
-                      <tr>
-                        <td>Emergency Support Line</td>
-                        <td class="fw-medium text-end">###-###-####</td>
-                      </tr>
-                      <tr>
-                        <td>24/7 Crisis Support</td>
-                        <td class="fw-medium text-end">Chat / Phone</td>
-                      </tr>
-                      <tr>
-                        <td>Safe Exit Tips Shared</td>
-                        <td class="fw-medium text-end text-danger">Yes</td>
-                      </tr>
-                      <tr>
-                        <td>Safety Planning Call</td>
-                        <td class="fw-medium text-end">Scheduled</td>
-                      </tr>
-                      <tr>
-                        <td>Local Shelter Info</td>
-                        <td class="fw-medium text-end">Ready</td>
-                      </tr>
+                      <tr><td>Emergency Support Line</td><td class="fw-medium text-end">###-###-####</td></tr>
+                      <tr><td>24/7 Crisis Support</td><td class="fw-medium text-end">Chat / Phone</td></tr>
+                      <tr><td>Safe Exit Tips Shared</td><td class="fw-medium text-end text-danger">Yes</td></tr>
+                      <tr><td>Safety Planning Call</td><td class="fw-medium text-end">Scheduled</td></tr>
+                      <tr><td>Local Shelter Info</td><td class="fw-medium text-end">Ready</td></tr>
                     </tbody>
                   </table>
 
                   <hr />
-
                   <ul class="list-unstyled row text-center city-weather-days mb-0">
-                    <li class="col">
-                      <i class="ti ti-phone-call fs-4"></i><span>Emergency</span>
-                      <h3 class="mb-0 fs-6 lh-base">Call local 911 / emergency services</h3>
-                    </li>
-                    <li class="col">
-                      <i class="ti ti-user-shield fs-4"></i><span>Privacy</span>
-                      <h3 class="mb-0 fs-6 lh-base">We do not share without consent</h3>
-                    </li>
-                    <li class="col">
-                      <i class="ti ti-door-exit fs-4"></i><span>Quick Exit</span>
-                      <h3 class="mb-0 fs-6 lh-base">Close this tab fast if needed</h3>
-                    </li>
-                    <li class="col">
-                      <i class="ti ti-heart-handshake fs-4"></i><span>You’re not alone</span>
-                      <h3 class="mb-0 fs-6 lh-base">We’re here to help</h3>
-                    </li>
+                    <li class="col"><i class="ti ti-phone-call fs-4"></i><span>Emergency</span><h3 class="mb-0 fs-6 lh-base">Call local 911 / emergency services</h3></li>
+                    <li class="col"><i class="ti ti-user-shield fs-4"></i><span>Privacy</span><h3 class="mb-0 fs-6 lh-base">We do not share without consent</h3></li>
+                    <li class="col"><i class="ti ti-door-exit fs-4"></i><span>Quick Exit</span><h3 class="mb-0 fs-6 lh-base">Close this tab fast if needed</h3></li>
+                    <li class="col"><i class="ti ti-heart-handshake fs-4"></i><span>You’re not alone</span><h3 class="mb-0 fs-6 lh-base">We’re here to help</h3></li>
                   </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- My Legal Support -->
+            <div class="col-lg-6" id="my-case">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title mb-0">My Legal Support</h4>
+                  <p class="text-muted mb-4 fs-3">Your current lawyer and contact notes</p>
+
+                  <div class="mb-3 d-flex align-items-start border-bottom pb-3">
+                    <img src="./profile/user-1.jpg" class="rounded-circle" width="48" height="48" alt="lawyer" />
+                    <div class="ms-3 flex-grow-1">
+                      <div class="fw-semibold">A. Patel</div>
+                      <div class="text-muted small">Family Law • Licensed (ON)</div>
+                      <div class="badge bg-success-subtle text-success mt-2">Active on your case</div>
+                    </div>
+                    <div class="text-end small text-muted">Next call:<br />Apr 15, 2pm</div>
+                  </div>
+
+                  <div class="mb-3 d-flex align-items-start border-bottom pb-3">
+                    <div class="rounded-circle bg-warning-subtle text-warning hstack justify-content-center round-48 fs-4">
+                      <i class="ti ti-mail-forward"></i>
+                    </div>
+                    <div class="ms-3 flex-grow-1">
+                      <div class="fw-semibold">Need to send documents?</div>
+                      <div class="text-muted small">We’ll explain what’s needed and why.</div>
+                      <div class="badge bg-warning-subtle text-warning mt-2">No rush • we can help</div>
+                    </div>
+                    <div class="text-end small text-muted">Upload link<br />coming soon</div>
+                  </div>
+
+                  <div class="d-flex align-items-start">
+                    <div class="rounded-circle bg-secondary-subtle text-secondary hstack justify-content-center round-48 fs-4">
+                      <i class="ti ti-shield-lock"></i>
+                    </div>
+                    <div class="ms-3 flex-grow-1">
+                      <div class="fw-semibold">Your privacy matters</div>
+                      <div class="text-muted small">Only your assigned support team can view details.</div>
+                      <div class="badge bg-secondary-subtle text-secondary mt-2">Confidential</div>
+                    </div>
+                  </div>
 
                 </div>
               </div>
@@ -530,25 +536,163 @@
           </div>
 
           <div class="py-6 px-6 text-center">
-            <p class="mb-0 fs-4">
-              JusticeConnect • You’re in control of your information
-            </p>
+            <p class="mb-0 fs-4">JusticeConnect • You’re in control of your information</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- scripts -->
-  <!-- <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
+  <!-- scripts (use your existing bundles if they already include these libs) -->
+  <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./assets/js/sidebarmenu.js"></script>
   <script src="./assets/js/app.min.js"></script>
   <script src="./assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="./assets/libs/simplebar/dist/simplebar.js"></script> -->
+  <script src="./assets/libs/simplebar/dist/simplebar.js"></script>
 
-  <!-- You can reuse dashboard.js, but rename series to "Submitted" / "In Progress" -->
-  <script src="./assets/js/dashboard.js"></script>
+  <!-- Example chart init; rename series to match survivor context -->
+  <script>
+    (function() {
+      if (window.ApexCharts) {
+        const el = document.querySelector("#sales-overview");
+        if (el) {
+          const chart = new ApexCharts(el, {
+            chart: { type: "area", height: 260, toolbar: { show: false } },
+            dataLabels: { enabled: false },
+            stroke: { curve: "smooth", width: 2 },
+            series: [
+              { name: "Submitted", data: [3, 5, 7, 6, 9, 10, 12] },
+              { name: "In Progress", data: [1, 2, 3, 3, 4, 5, 6] }
+            ],
+            xaxis: { categories: ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"] },
+            yaxis: { labels: { formatter: v => Math.round(v) } },
+            tooltip: { shared: true },
+            grid: { borderColor: "rgba(0,0,0,0.05)" }
+          });
+          chart.render();
+        }
+      }
+    })();
+  </script>
+
+  <!-- New Case Request: validation + upload handling + demo submit -->
+  <script>
+    (function () {
+      const form = document.getElementById('caseRequestForm');
+      if (!form) return;
+
+      // ---- Upload constraints
+      const MAX_FILES = 5;
+      const MAX_PER_FILE = 10 * 1024 * 1024; // 10 MB
+      const MAX_TOTAL = 25 * 1024 * 1024;    // 25 MB
+
+      const fileInput = document.getElementById('attachments');
+      const fileList = document.getElementById('fileList');
+      const fileError = document.getElementById('fileError');
+
+      const successBox = document.getElementById('caseRequestSuccess');
+      const errorBox = document.getElementById('caseRequestError');
+
+      function formatBytes(bytes) {
+        if (bytes === 0) return '0 B';
+        const k = 1024, sizes = ['B','KB','MB','GB'], i = Math.floor(Math.log(bytes)/Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+      }
+
+      function validateFiles(files) {
+        fileError.style.display = 'none';
+        fileError.textContent = '';
+        fileList.innerHTML = '';
+
+        if (!files || files.length === 0) return true;
+
+        let total = 0;
+        const problems = [];
+
+        if (files.length > MAX_FILES) {
+          problems.push(`You can upload up to ${MAX_FILES} files.`);
+        }
+
+        Array.from(files).forEach((f) => {
+          total += f.size;
+          if (f.size > MAX_PER_FILE) {
+            problems.push(`"${f.name}" is ${formatBytes(f.size)} (limit is ${formatBytes(MAX_PER_FILE)}).`);
+          }
+          const li = document.createElement('li');
+          li.textContent = `${f.name} • ${formatBytes(f.size)}`;
+          fileList.appendChild(li);
+        });
+
+        if (total > MAX_TOTAL) {
+          problems.push(`Total size ${formatBytes(total)} exceeds ${formatBytes(MAX_TOTAL)}.`);
+        }
+
+        if (problems.length) {
+          fileError.textContent = problems.join(' ');
+          fileError.style.display = 'block';
+          return false;
+        }
+        return true;
+      }
+
+      function isUrgencyChecked() {
+        return !!form.querySelector('input[name="urgency"]:checked');
+      }
+
+      // Live file validation on change
+      if (fileInput) {
+        fileInput.addEventListener('change', () => validateFiles(fileInput.files));
+      }
+
+      // HTML5 validation + custom radio + upload checks
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Hide alert boxes
+        successBox.classList.add('d-none');
+        errorBox.classList.add('d-none');
+
+        // Custom radio validity
+        const urgencyError = document.getElementById('urgencyError');
+        if (!isUrgencyChecked()) {
+          urgencyError.style.display = 'block';
+        } else {
+          urgencyError.style.display = 'none';
+        }
+
+        // Files
+        const filesOK = validateFiles(fileInput ? fileInput.files : null);
+
+        // Built-in validation
+        if (!form.checkValidity() || !isUrgencyChecked() || !filesOK) {
+          e.stopPropagation();
+          form.classList.add('was-validated');
+          return;
+        }
+
+        // Build multipart form data (includes files automatically)
+        const fd = new FormData(form);
+
+        // TODO: Replace with your real endpoint
+        // Example:
+        // try {
+        //   const res = await fetch('/api/cases/request', { method: 'POST', body: fd });
+        //   if (!res.ok) throw new Error('Network error');
+        //   await res.json();
+        //   successBox.classList.remove('d-none');
+        //   form.reset(); fileList.innerHTML=''; fileError.style.display='none'; form.classList.remove('was-validated');
+        // } catch (err) {
+        //   errorBox.textContent = '⚠️ Unable to submit right now. Please try again.';
+        //   errorBox.classList.remove('d-none');
+        // }
+
+        // Demo only (remove when wiring backend)
+        successBox.classList.remove('d-none');
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    })();
+  </script>
 
   <!-- icons -->
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
