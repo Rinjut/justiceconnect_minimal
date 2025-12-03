@@ -215,7 +215,8 @@
                   <div id="sales-overview" class="mt-4 mx-n6"></div>
 
                   <div class="mt-4 small text-muted">
-                    Last updated: April 14, 2025 • You are currently handling 5 active matters
+                    Last updated: <span id="lawyerLastUpdated">—</span> • 
+                    You are currently handling <span id="lawyerActiveCount">0</span> active matters
                   </div>
                 </div>
               </div>
@@ -338,102 +339,8 @@
                           <th scope="col" class="px-0 text-muted text-end">Status</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <img src="./profile/user-3.jpg" class="rounded-circle" width="40" alt="client" />
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">Anonymous Survivor</h6>
-                                <span class="text-muted">Ontario • Family Safety</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">JC-2025-017</td>
-                          <td class="px-0">
-                            <span class="badge bg-danger">High</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Call at 2pm
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <img src="./profile/user-5.jpg" class="rounded-circle" width="40" alt="client" />
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">J. D.</h6>
-                                <span class="text-muted">Alberta • Housing</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">JC-2025-020</td>
-                          <td class="px-0">
-                            <span class="badge text-bg-primary">Medium</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Intake docs pending
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <img src="./profile/user-6.jpg" class="rounded-circle" width="40" alt="client" />
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">Confidential</h6>
-                                <span class="text-muted">Ontario • Family Law</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">JC-2025-021</td>
-                          <td class="px-0">
-                            <span class="badge bg-warning">High</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Reviewing intake
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <img src="./profile/user-7.jpg" class="rounded-circle" width="40" alt="client" />
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">A. S.</h6>
-                                <span class="text-muted">BC • Employment</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">JC-2025-022</td>
-                          <td class="px-0">
-                            <span class="badge bg-success">Low</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Waiting client confirm
-                          </td>
-                        </tr>
-
-                        <tr>
-                          <td class="px-0">
-                            <div class="d-flex align-items-center">
-                              <img src="./profile/user-8.jpg" class="rounded-circle" width="40" alt="client" />
-                              <div class="ms-3">
-                                <h6 class="mb-0 fw-bolder">M. R.</h6>
-                                <span class="text-muted">Ontario • Benefits</span>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-0">JC-2025-023</td>
-                          <td class="px-0">
-                            <span class="badge bg-success">Low</span>
-                          </td>
-                          <td class="px-0 text-dark fw-medium text-end">
-                            Confirmed / Stable
-                          </td>
-                        </tr>
-
+                      <tbody id="lawyer-case-list">
+                        
                       </tbody>
                     </table>
                   </div>
@@ -588,6 +495,8 @@
 
   <!-- You can reuse dashboard.js; rename data series labels to "New / Unreviewed" and "In Progress" -->
   <script src="./assets/js/dashboard.js"></script>
+  <script src="js/lawyer-dashboard.js"></script>
+
 
   <!-- icons -->
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>

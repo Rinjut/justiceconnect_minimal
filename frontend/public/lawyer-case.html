@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case Details – Lawyer Portal</title>
+  <link rel="stylesheet" href="./css/styles.min.css">
+  <link rel="stylesheet" href="./css/login.css">
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="container mt-4">
+
+      <a href="lawyer.html" class="btn btn-secondary mb-3">← Back</a>
+
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Case Details</h3>
+          <p class="text-muted">Everything about this client</p>
+
+          <hr>
+
+          <div id="case-details">
+            Loading case...
+          </div>
+
+          <hr>
+
+          <h5>Add Lawyer Notes</h5>
+          <textarea id="lawyerNote" class="form-control" rows="4" placeholder="Write a note..."></textarea>
+          <button class="btn btn-primary mt-2" onclick="saveNote()">Save Note</button>
+
+          <hr>
+
+          <button id="btnCompleteCase" class="btn btn-success mt-4">
+            Mark Case as Completed
+            </button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/lawyer-case.js"></script>
+</body>
+</html>

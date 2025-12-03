@@ -19,6 +19,8 @@ const profileRoutes = require('./routes/profile.routes');
 const adminRoutes = require('./routes/admin.routes');   // ← ONLY ONCE
 const adminCasesRoutes = require('./routes/admin.cases');
 const adminSnapshotRoutes = require('./routes/admin.snapshot');
+const lawyerCaseRoutes = require("./routes/lawyer.case.routes");
+
 
 const app = express();
 
@@ -109,6 +111,12 @@ app.use('/api/admin', adminMetricsRoutes);
 app.use('/api/admin', adminSnapshotRoutes);
 app.use('/api', apiRoutes);
 app.use('/api', profileRoutes);
+app.use("/api/lawyer/dashboard", require("./routes/lawyer.dashboard.routes"));
+app.use("/api", require("./routes/lawyer.dashboard.routes"));
+app.use("/api", require("./routes/lawyer.case.routes"));
+app.use("/api", lawyerCaseRoutes);
+
+
 
 const port = process.env.PORT || 4000;
 app.listen(port, () =>
