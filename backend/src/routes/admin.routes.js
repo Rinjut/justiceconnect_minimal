@@ -15,7 +15,7 @@ function priorityBadge(urgency) {
 // ⭐ ONLY ONE ROUTE — KEEP THIS ONE
 router.get('/cases/queue', requireAuth, requireRole('admin'), async (req, res) => {
   try {
-    const statuses = ['Submitted', 'In Review', 'Assigned'];
+    const statuses = ['Submitted', 'In Review', 'Assigned', 'Closed'];
 
     const cases = await CaseRequest.find({ status: { $in: statuses } })
       .sort({ createdAt: -1 })

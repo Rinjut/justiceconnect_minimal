@@ -167,9 +167,18 @@
 
   // Nav cleanup (CSP safe)
   document.querySelectorAll('a[href^="javascript:"]').forEach(a => a.setAttribute('href', '#'));
-  $('#btnLogout, #btnLogoutTop').on('click', function (e) {
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('[data-logout]');
+    if (!link) return;
     e.preventDefault();
-    if (typeof logout === 'function') logout();
+    if (typeof logout === 'function') {
+      logout().catch((err) => {
+        console.error('Logout failed', err);
+        window.location.href = 'index.html';
+      });
+    } else {
+      window.location.href = 'index.html';
+    }
   });
   // Optional: sidebar toggle if your theme script isn’t active
   const headerCollapse = document.getElementById('headerCollapse');

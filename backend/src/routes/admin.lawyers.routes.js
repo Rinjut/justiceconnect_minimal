@@ -7,7 +7,13 @@ const Lawyer = require("../models/Lawyer");
 router.get("/lawyers", async (req, res) => {
   try {
     const lawyers = await Lawyer.find().sort({ fullName: 1 }).lean();
-    res.json({ items: lawyers });
+    res.json({
+      success: true,
+      data: lawyers,
+      // keep the older shape for backward compatibility
+      items: lawyers,
+      count: lawyers.length
+    });
   } catch (err) {
     console.error("GET /api/admin/lawyers ERROR:", err);
     res.status(500).json({ message: "Server error" });

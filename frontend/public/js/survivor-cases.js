@@ -24,7 +24,7 @@
     if (s === "submitted") return `<span class="badge bg-primary-subtle text-primary">Submitted</span>`;
     if (s === "review" || s === "in review") return `<span class="badge bg-warning text-dark">In Review</span>`;
     if (s === "assigned") return `<span class="badge bg-success-subtle text-success">Assigned</span>`;
-    if (s === "closed") return `<span class="badge bg-secondary-subtle text-secondary">Closed</span>`;
+    if (s === "closed" || s === "completed") return `<span class="badge bg-secondary-subtle text-secondary">Closed</span>`;
     return `<span class="badge bg-secondary">${status}</span>`;
   }
 
@@ -58,56 +58,9 @@
     }
   }
 
-  // ------------------ 1. SINGLE ROW SUMMARY ------------------
-  async function renderLatestCaseRow() {
-    const elId = $("cd-caseId");
-    const elSt = $("cd-status");
-    const elLaw = $("cd-lawyer");
-    const elNext = $("cd-next");
-    const elDesc = $("cd-desc");
-    const elUpd = $("cd-updated");
-    const elView = $("cd-view");
-    const elEdit = $("cd-edit");
-    const elDelete = $("cd-delete");
-
-    // If summary row is not on this page, silently skip
-    if (!elId || !elSt || !elLaw || !elNext || !elDesc || !elUpd) return;
-
-    try {
-      const data = await apiJson("/api/cases/latest");
-      const c = data.case;
-
-      if (!c) {
-        elId.textContent = "—";
-        elSt.innerHTML = statusBadge("Submitted");
-        elLaw.textContent = "—";
-        elNext.textContent = "—";
-        elDesc.textContent = "No cases yet.";
-        elUpd.textContent = "—";
-        return;
-      }
-
-      // Fill fields
-      elId.textContent = c.caseId;
-      elSt.innerHTML = statusBadge(c.status);
-      elLaw.textContent = c.assignedLawyerName || "—";
-      elNext.textContent = c.desiredOutcome || "—";
-      elDesc.textContent = c.situation || "—";
-      elUpd.textContent = fmtDate(c.updatedAt);
-
-      // ACTION BUTTONS
-      if (elView)  elView.href  = `/case-view.html?id=${c._id}`;
-      if (elEdit)  elEdit.href  = `/case-edit.html?id=${c._id}`;
-      if (elDelete) elDelete.onclick = () => deleteCase(c._id);
-
-    } catch (err) {
-      console.error("Latest case error:", err);
-    }
-  }
-
-  // ------------------ 2. FULL CASE LIST (optional) ------------------
-  async function renderMyCasesList() {
-    const tbody = document.getElementById("cases-tbody");
+  // ------------------ Case table (all cases) ------------------
+  async function renderCaseTable() {
+    const tbody = document.getElementById("my-cases-body");
     if (!tbody) return;
 
     try {
@@ -122,10 +75,11 @@
 
       tbody.innerHTML = items
         .map((c) => {
+          const displayStatus = c.status || (c.completedAt ? "Closed" : "");
           return `
             <tr>
               <td>${c.caseId}</td>
-              <td>${statusBadge(c.status)}</td>
+              <td>${statusBadge(displayStatus)}</td>
               <td>${c.assignedLawyerName || "—"}</td>
               <td>${c.desiredOutcome || "—"}</td>
               <td>${c.situation || "—"}</td>
@@ -150,8 +104,7 @@
 
   // ------------------ INITIALIZE ------------------
   function boot() {
-    renderLatestCaseRow();
-    renderMyCasesList();
+    renderCaseTable();
   }
 
   // Ensure DOM is ready

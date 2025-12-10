@@ -178,8 +178,17 @@ router.get("/latest", mustBeLoggedIn, async (req, res) => {
 router.get("/mine", mustBeLoggedIn, async (req, res) => {
   try {
     const userId = req.user?._id || req.session.userId;
+    const email = req.user?.email || req.session.user?.email || null;
+    const phone = req.user?.phone || req.session.user?.phone || null;
 
-    const list = await CaseRequest.find({ user: userId })
+    // Primary match by user; fallback to contactValue for legacy/orphaned records
+    const match = [
+      { user: userId },
+    ];
+    if (email) match.push({ contactValue: email });
+    if (phone) match.push({ contactValue: phone });
+
+    const list = await CaseRequest.find({ $or: match })
       .sort({ updatedAt: -1 })
       .lean();
 

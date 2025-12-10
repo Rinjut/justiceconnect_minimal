@@ -9,21 +9,19 @@ const priorityBadge = (p) => {
 };
 
 // ===== Load lawyers dynamically into dropdown (MUST be above init!) =====
-async function loadLawyersIntoDropdown() {
+async function loadLawyersIntoDropdown(preferredLawyerId = "") {
   try {
     const res = await fetch("/api/admin/lawyers", { credentials: "include" });
+    if (!res.ok) throw new Error(`Failed to load lawyers: ${res.status}`);
+
     const json = await res.json();
-
-    if (!json.success) {
-      console.error("Failed to load lawyers");
-      return;
-    }
-
-    const lawyers = json.data;
+    const lawyers = json.data || json.items || [];
+    if (!Array.isArray(lawyers)) throw new Error("Unexpected response shape");
     const select = document.getElementById("as-lawyer");
+    if (!select) return [];
 
     // Reset dropdown
-    select.innerHTML = `<option value="" disabled selected>Choose a lawyer…</option>`;
+    select.innerHTML = `<option value="" disabled selected>Choose a lawyer...</option>`;
 
     lawyers.forEach((lawyer) => {
       const option = document.createElement("option");
@@ -31,8 +29,22 @@ async function loadLawyersIntoDropdown() {
       option.textContent = `${lawyer.fullName} (${lawyer.specialization})`;
       select.appendChild(option);
     });
+
+    if (preferredLawyerId) {
+      const match = lawyers.find((l) => String(l._id) === String(preferredLawyerId));
+      if (match) {
+        select.value = preferredLawyerId;
+      }
+    }
+
+    return lawyers;
   } catch (err) {
     console.error("Error loading lawyers:", err);
+    const select = document.getElementById("as-lawyer");
+    if (select) {
+      select.innerHTML = `<option value="" disabled selected>Unable to load lawyers</option>`;
+    }
+    return [];
   }
 }
 
@@ -52,6 +64,20 @@ async function loadCase(caseId) {
 (async function init() {
   try {
     const caseId = qs("caseId");
+    const preferredLawyerId = qs("assign") || (() => {
+      try {
+        return sessionStorage.getItem("jc_assign_lawyer") || "";
+      } catch (_) {
+        return "";
+      }
+    })();
+    const preferredLawyerName = (() => {
+      try {
+        return sessionStorage.getItem("jc_assign_lawyer_name") || "";
+      } catch (_) {
+        return "";
+      }
+    })();
 
     if (!caseId) {
       document.querySelector("main").innerHTML =
@@ -68,7 +94,13 @@ async function loadCase(caseId) {
     const data = await loadCase(caseId);
 
     // Load lawyers into dropdown BEFORE filling form
-    await loadLawyersIntoDropdown();
+    await loadLawyersIntoDropdown(preferredLawyerId);
+    if (preferredLawyerId) {
+      try {
+        sessionStorage.removeItem("jc_assign_lawyer");
+        sessionStorage.removeItem("jc_assign_lawyer_name");
+      } catch (_) { /* ignore */ }
+    }
 
     // ===== Fill Summary =====
     document.getElementById("cd-caseId").textContent = `Case: ${data.caseId}`;
@@ -148,6 +180,13 @@ async function loadCase(caseId) {
     const err = document.getElementById("assignError");
 
     if (form) {
+      if (preferredLawyerId) {
+        const helper = document.createElement("div");
+        helper.className = "alert alert-info";
+        helper.textContent = `You selected ${preferredLawyerName || "a lawyer"} from the directory.`;
+        form.prepend(helper);
+      }
+
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (!form.checkValidity()) {
