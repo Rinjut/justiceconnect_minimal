@@ -8,3 +8,10 @@
 .dl-grid { display:grid; grid-template-columns:220px 1fr; row-gap:.4rem; }
 @media (max-width:768px){ .dl-grid{ grid-template-columns:1fr; } }
 .heading-xs { font-size:.875rem; letter-spacing:.02em; color:#6c757d; }
+
+/* ✅ Fix Admin Sidebar Logo Size */
+.left-sidebar .logo-img img {
+  width: 250px;          /* Adjust this value if needed */
+  height: auto;        /* Keeps proper aspect ratio */
+  object-fit: contain; /* Prevents stretching */
+}

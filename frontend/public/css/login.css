@@ -16073,3 +16073,12 @@ ul {
 }
 
 /*# sourceMappingURL=styles.min.css.map */
+/* ✅ Fix Login Page Logo Size */
+.logo-img img {
+  width: 250px;        /* ✅ Adjust size here */
+  height: auto;       
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;     /* ✅ Center the logo */
+}
+

@@ -16062,3 +16062,9 @@ ul {
 }
 
 /*# sourceMappingURL=styles.min.css.map */
+/* ✅ Fix Admin Sidebar Logo Size */
+.left-sidebar .logo-img img {
+  width: 250px;          /* Adjust this value if needed */
+  height: auto;        /* Keeps proper aspect ratio */
+  object-fit: contain; /* Prevents stretching */
+}
